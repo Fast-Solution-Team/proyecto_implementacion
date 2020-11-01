@@ -12,3 +12,5 @@ git push --tags  >> sube los tags a github
 git pull descarga todo los cambio hechos por los demas usuario al repositorio
 
 git clone https://github.com/Aderly01/proyecto_implementacion.git emoney_rebuild>> clona un repositorio
+
+y esto son cambios desde github
