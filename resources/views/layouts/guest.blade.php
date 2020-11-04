@@ -12,13 +12,19 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+
+            .font-family-karla {
+                font-family: karla;
+            }
+        </style>
 
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.js" defer></script>
     </head>
-    <body>
-        <div class="font-sans text-gray-900 antialiased">
+    <body class="bg-white font-family-karla h-screen">
             {{ $slot }}
-        </div>
     </body>
 </html>

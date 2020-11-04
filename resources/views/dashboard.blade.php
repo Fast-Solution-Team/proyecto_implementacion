@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Estas sera la pagina de inicio') }}
+            {{ __('Esta sera la pagina de inicio') }}
         </h2>
     </x-slot>
 
