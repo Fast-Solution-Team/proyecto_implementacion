@@ -20,3 +20,14 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+/**Deposito */
+Route::resource('saldo_billetera', DepositoController::class);
+Route::get('/emoney', function () {
+    return view('index');
+});
+Route::get('/deposito/{iduser}', [DepositoController::class ,'index']);
+Route::put('/deposito/{iduser}', [DepositoController::class ,'update']);
+/**Deposito */
+
