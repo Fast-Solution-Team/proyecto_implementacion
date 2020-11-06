@@ -7,7 +7,10 @@ git push -u origin master >> hace un push desde mi rama "master" al remote "orig
 
 git remote add origin https://github.com/Aderly01/proyecto_implementacion.git
 git push -u origin master
+
+
 git push --tags  >> sube los tags a github
+git push -f -> fuerza un push en github
 
 git pull descarga todo los cambio hechos por los demas usuario al repositorio
 

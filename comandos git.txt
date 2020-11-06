@@ -22,6 +22,8 @@ git add css/*.css  >>  agrega todos los archivos css de la carpeta css
 
 git commit >> crea un registro histrico de todos los archivos que fueron enviados al 
 	        stage por el comando git add .
+git commit --amend -m "mensaje" --> arregla o modifica el mensaje del ultimo commit
+
 git status >>    muesta todos los archivos que han recibido cambios desde el ultimo commit hasta la 
 	        fecha. Muesta que es lo que esta en el stage
 git status -s  >>
@@ -31,7 +33,10 @@ git log --oneline --decorate --all --graph
 
 git checkout . >> restaura todo los archivo s del proyecto al u ltimo commit
 
-git tag nombre_del_tag >> crea una etiqueta para el ultimo commit realizado
+git tag nombre_tag --> crea un tag ligero
+git tag -a nombre_tag -m "mensaje" --> crea un tag anotada, con mas informacion
+git tag -a nombre_tag -m "mensaje" 5f2770a --> le asigna un tag a un commit anterior al actual
+git tag --> muestra todo los tags creados
 
 
 muestra las todas las ramas en el repositorio --> git branch
