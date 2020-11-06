@@ -40,6 +40,7 @@ git tag --> muestra todo los tags creados
 
 
 muestra las todas las ramas en el repositorio --> git branch
+muestra  la rama oculta en el repositorio --> git branch - a
 para crear una rama --> git branch nombre_rama
 nos situamos en la rama creada--> git checkout nombre_rama
 para crear y situarnos en la misma rama que creamos en un solo comando --> git checkout -b nombre_rama

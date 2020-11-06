@@ -1,11 +1,12 @@
-git remote add origin https://github.com/Aderly01/proyecto_implementacion.git  -->> agrega un nuevo remoto al repositorioo del link ingresado
+git remote add origin url  -->> agrega un nuevo remoto al repositorioo del link ingresado
+git remote remove origin --> desconecta el remoto
 git remote -v >> muestra todos los remotes que hay en el repositorio
 
 git push -u origin master >> hace un push desde mi rama "master" al remote "origin" del repositorio
 
 
 
-git remote add origin https://github.com/Aderly01/proyecto_implementacion.git
+git remote add origin
 git push -u origin master
 
 
