@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DepositoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +24,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 /**Deposito */
 Route::resource('saldo_billetera', DepositoController::class);
+
 Route::get('/emoney', function () {
     return view('index');
 });
