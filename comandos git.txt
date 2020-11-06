@@ -36,6 +36,9 @@ git tag nombre_del_tag >> crea una etiqueta para el ultimo commit realizado
 
 muestra las todas las ramas en el repositorio --> git branch
 para crear una rama --> git branch nombre_rama
+nos situamos en la rama creada--> git checkout nombre_rama
+para crear y situarnos en la misma rama que creamos en un solo comando --> git checkout -b nombre_rama
+para borrar una rama --> git branch -d nombre_rama
 --------------------------PARA FUSIONAR UNA RAMA CON LA RAMA MASTER---------------------
 nos situamos en la rama master --> git checkout master
 luego fusionamos la rama que queremos fusionar --> git merge nombre_rama
