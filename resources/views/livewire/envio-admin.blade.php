@@ -1,5 +1,5 @@
 <div xmlns:wire="http://www.w3.org/1999/xhtml">
-
+    @include('livewire.admin.detalle_envio')
     <div class="flex flex-col">
         <!-- Stats Row Starts Here -->
         <div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2">
@@ -20,7 +20,7 @@
                         1
                     </a>
                     <a href="#" class="no-underline text-white text-lg">
-                        Pagos realizados
+                        Envios Realizados
                     </a>
                 </div>
             </div>
@@ -55,39 +55,38 @@
                     <table class="table text-grey-darkest">
                         <thead class="bg-grey-dark text-white text-normal">
                         <tr>
-                            <th scope="col">Id billetera</th>
+                            <th scope="col">Billetera</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Identidad</th>
-                            <th scope="col">Domicilio</th>
-                            <th scope="col">Servicio</th>
+                            <th scope="col">Billetera destino</th>
 
                             <th scope="col">Fecha</th>
                             <th scope="col">Monto</th>
                             <th scope="col">Saldo anterior</th>
                             <th scope="col">Saldo posterior</th>
+                            <th scope="col">Detalle</th>
 
                         </tr>
                         </thead>
                         <tbody>
 
-                        @foreach($depositos as $value )
+                        @foreach($envios as $value )
 
                             <tr>
 
                                 <td>{{$value->ID_BILLETERA}}</td>
                                 <td>{{$value->name}} {{$value->second_name}} {{$value->lastname}} {{$value->second_lastname}}</td>
                                 <td>{{$value->identidad}}</td>
-                                <td>{{$value->direccion}}</td>
-                                <td>{{$value->NOMBRE}}</td>
+                                <td>{{$value->ID_BILLETERA_DESTINO}}</td>
                                 <td>{{$value->FECHA_MOVIMIENTO}}</td>
                                 <td>{{$value->MONTO_TRANSACCION}}</td>
                                 <td>{{$value->SALDO_ANTERIOR}}</td>
                                 <td>{{$value->SALDO_POSTERIOR}}</td>
+                                <td>  <button data-modal='detalleEnvio' wire:click.prevent="detalleBiDestino({{$value->ID_BILLETERA_DESTINO}})" class="modal-trigger bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                        Detalle
+                                    </button>
 
-
-
-
-
+                                </td>
 
 
                             </tr>
