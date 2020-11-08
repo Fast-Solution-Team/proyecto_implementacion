@@ -82,6 +82,15 @@
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>
                     </li>
+
+                    <li class="w-full h-full py-3 px-2 border-b border-light-border">
+                        <a href="{{route('/pago')}}"
+                           class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                            <i class="fas fa-grip-horizontal float-left mx-2"></i>
+                            Pago de Servicios
+                            <span><i class="fa fa-angle-right float-right"></i></span>
+                        </a>
+                    </li>
                     <li class="w-full h-full py-3 px-2 border-b border-light-border">
                         <a href="{{route('/envios')}}"
                            class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
