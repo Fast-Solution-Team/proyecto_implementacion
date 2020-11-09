@@ -28,7 +28,7 @@
                             </button>
                         @else
                             <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                                <div>{{ Auth::user()->name }}</div>
+                                <div>{{ Auth::user()->name .' '. Auth::user()->lastname}}</div>
 
                                 <div class="ml-1">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -101,8 +101,8 @@
                         </form>
                     </x-slot>
                 </x-jet-dropdown>
-                <div class="block px-4 py-2 text-xs text-gray-400">
-                    {{ __('Saldo: 0:00') }}
+                <div class="block px-4 py-2 font-medium text-gray-500">
+                    {{'Saldo: 0.0'}}
                 </div>
             </div>
 
