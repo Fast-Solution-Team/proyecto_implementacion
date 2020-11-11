@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 //Ruta para mostrar el formulario para el pago de servicios
 Route::middleware(['auth:sanctum', 'verified'])->get('/tr/ps', function () {
-    return view('pagoServicios');
+    return view('pagoServiciosForm');
 })->name('pago.mostrar');
 
 
