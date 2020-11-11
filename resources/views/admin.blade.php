@@ -17,7 +17,7 @@
 
 <body>
 <!--Container -->
-<div class="mx-auto bg-grey-400">
+<div class="mx-auto bg-grey-800">
     <!--Screen-->
     <div class="min-h-screen flex flex-col">
         <!--Header Section Starts Here-->

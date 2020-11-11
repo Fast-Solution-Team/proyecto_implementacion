@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-gray-800 border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -12,8 +12,8 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Emoney') }}
+                    <x-jet-nav-link class="hover:border-red-500 " href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        <label class="text-gray-500 font-bold text-3xl border-blue-700">Emoney</label>
                     </x-jet-nav-link>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                                 <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                             </button>
                         @else
-                            <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                            <button class="flex items-center text-sm font-medium text-gray-500 hover:text-yellow-400 hover:border-gray-300 focus:outline-none focus:text-yellow-400 focus:border-gray-300 transition duration-500 ease-in-out">
                                 <div>{{ Auth::user()->name .' '. Auth::user()->lastname}}</div>
 
                                 <div class="ml-1">
