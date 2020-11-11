@@ -17,21 +17,21 @@
             </div>
 
             <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
-                <p class="text-center text-3xl">Bienvenido</p>
+                <p class="font-bold uppercase text-gray-800 text-center text-3xl">Bienvenido</p>
         <form method="POST"  class="flex flex-col pt-3 md:pt-8" action="{{ route('login') }}">
             @csrf
             <div class="flex flex-col pt-4">
-                <label for="email" class="text-lg">Correo</label>
-                <input id="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight" type="email" name="email" :value="old('email')" required autofocus />
+                <label for="email" class="font-bold uppercase text-gray-800 text-lg">Correo</label>
+                <input id="email" class="shadow appearance-none border rounded focus:border-blue-400 w-full py-2 px-3 text-gray-700 mt-1 leading-tight" type="email" name="email" :value="old('email')" required autofocus />
             </div>
             <div class="flex flex-col pt-4">
-                <label for="password" class="text-lg">Contraseña</label>
-                <input id="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight"  type="password" name="password" required autocomplete="current-password" />
+                <label for="password" class="font-bold uppercase text-gray-800 text-lg">Contraseña</label>
+                <input id="password" class="shadow appearance-none border rounded focus:border-blue-400 w-full py-2 px-3 text-gray-700 mt-1 leading-tight"  type="password" name="password" required autocomplete="current-password" />
             </div>
             <div class="block mt-4">
                 <label for="remember_me" class="text-lg" class="flex items-center">
                     <input id="remember_me" type="checkbox" class="form-checkbox" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Recordarme') }}</span>
+                    <span class="ml-2 text-sm text-gray-800">{{ __('Recordarme') }}</span>
                 </label>
             </div>
             <div class="flex items-center justify-end mt-4">
