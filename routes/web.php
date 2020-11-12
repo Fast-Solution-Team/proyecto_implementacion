@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-//Ruta para mostrar el formulario para el pago de servicios
-Route::middleware(['auth:sanctum', 'verified'])->get('/tr/ps', function () {
+//Ruta para mostrar la pantalla para realizar transacciones
+Route::middleware(['auth:sanctum', 'verified'])->get('/tr', function () {
     return view('pagoServiciosForm');
-})->name('pago.mostrar');
+})->name('tr.mostrar');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

@@ -12,7 +12,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
+        @yield('estilos')
         @livewireStyles
 
         <!-- Scripts -->
@@ -30,12 +30,10 @@
 {{--            </header>--}}
 
             <!-- Page Content -->
-            @yield('sidebar')
+            @yield('content')
 
         </div>
-        <main>
-            @yield('main')
-        </main>
+
         @stack('modals')
 
         @livewireScripts

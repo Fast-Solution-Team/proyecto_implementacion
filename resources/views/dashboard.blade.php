@@ -38,7 +38,7 @@
 
 
                                 <div class="summary-post text-base text-justify">Realiza tu envió de dinero y pago de servicios de manera mas segura y sin salir de tu casa, a través de tu billetera electrónica.
-                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold block rounded p-2 text-sm " >IR</button>
+                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold block rounded p-2 text-md " ><a href="{{route('tr.mostrar')}}">IR</a></button>
                                 </div>
 
                             </div>
@@ -57,7 +57,7 @@
                                 </div>
 
                                 <div class="summary-post text-base text-justify">Recuerda que tu nuevo pin: debe ser de 4 dígitos, solo debe contener números y no letras, no pueden ser números seguidos, ej. 1234, tampoco deben ser números repetidos, ej. 2222.
-                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold block rounded p-2 text-sm " >IR</button>
+                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold block rounded p-2 text-md " >IR</button>
                                 </div>
 
                             </div>
@@ -76,7 +76,7 @@
                                 </div>
 
                                 <div class="summary-post text-base text-justify">Te ayudara a obtener mayor información específica sobre alguna transacción que hayas realizado.
-                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold block rounded p-2 text-sm " >IR</button>
+                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold block rounded p-2 text-md " >IR</button>
                                 </div>
                             </div>
                         </div>
