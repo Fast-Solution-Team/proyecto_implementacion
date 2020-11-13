@@ -18,8 +18,11 @@ Route::get('/', function () {
 });
 //Ruta para mostrar la pantalla para realizar transacciones
 Route::middleware(['auth:sanctum', 'verified'])->get('/tr', function () {
-    return view('pagoServiciosForm');
+    return view('transacciones');
 })->name('tr.mostrar');
+Route::middleware(['auth:sanctum', 'verified'])->get('/tr/ps', function () {
+    return view('livewire.transacciones.pago_servicio');
+})->name('pago.servicio');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

@@ -19,7 +19,7 @@
             <section class="bg-blue-200 blog text-gray-700 body-font">
                 <div class="container px-5 py-24 mx-auto">
                     <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
-                        <h1 class="md:text-3xl text-2xl font-bold title-font mb-2 text-blue-500"> Emoney</h1>
+                        <h1 class="md:text-3xl text-2xl font-bold title-font mb-2 text-blue-500 uppercase" > Emoney</h1>
                         <p class="lg:w-1/2 w-full leading-relaxed font-bold text-base">
                             A traves de tu billetera electronica podras encontrar la forma mas rapida y segura para realizar tus transacciones mediante el sitio web.  </p>
                     </div>
