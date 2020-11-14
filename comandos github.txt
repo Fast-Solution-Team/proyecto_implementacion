@@ -20,4 +20,4 @@ git clone https://github.com/Aderly01/proyecto_implementacion.git emoney_rebuild
 git fetch >> git va actualizar localmente todos los cambios que se sucedieron en el repositorio de github
 git push --set-upstream origin nombre-rama ->> hace push de una rama del repositorio local al repositorio en github
 
-
+ax2
