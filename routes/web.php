@@ -16,10 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-//Ruta para mostrar el formulario para el pago de servicios
+//Ruta para mostrar la pantalla para realizar transacciones
+Route::middleware(['auth:sanctum', 'verified'])->get('/tr', function () {
+    return view('transacciones');
+})->name('tr.mostrar');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/tr/ps', function () {
-    return view('pagoServicios');
-})->name('pago.mostrar');
+    return view('livewire.transacciones.pago_servicio');
+})->name('pago.servicio');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

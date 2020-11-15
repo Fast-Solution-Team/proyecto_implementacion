@@ -19,7 +19,7 @@
             <section class="bg-blue-200 blog text-gray-700 body-font">
                 <div class="container px-5 py-24 mx-auto">
                     <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
-                        <h1 class="md:text-3xl text-2xl font-bold title-font mb-2 text-blue-500"> Emoney</h1>
+                        <h1 class="md:text-3xl text-2xl font-bold title-font mb-2 text-blue-500 uppercase" > Emoney</h1>
                         <p class="lg:w-1/2 w-full leading-relaxed font-bold text-base">
                             A traves de tu billetera electronica podras encontrar la forma mas rapida y segura para realizar tus transacciones mediante el sitio web.  </p>
                     </div>
@@ -38,7 +38,7 @@
 
 
                                 <div class="summary-post text-base text-justify">Realiza tu envió de dinero y pago de servicios de manera mas segura y sin salir de tu casa, a través de tu billetera electrónica.
-                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold block rounded p-2 text-sm " >IR</button>
+                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold block rounded p-2 text-md " ><a href="{{route('tr.mostrar')}}">IR</a></button>
                                 </div>
 
                             </div>
@@ -57,7 +57,7 @@
                                 </div>
 
                                 <div class="summary-post text-base text-justify">Recuerda que tu nuevo pin: debe ser de 4 dígitos, solo debe contener números y no letras, no pueden ser números seguidos, ej. 1234, tampoco deben ser números repetidos, ej. 2222.
-                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold block rounded p-2 text-sm " >IR</button>
+                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold block rounded p-2 text-md " >IR</button>
                                 </div>
 
                             </div>
@@ -76,7 +76,7 @@
                                 </div>
 
                                 <div class="summary-post text-base text-justify">Te ayudara a obtener mayor información específica sobre alguna transacción que hayas realizado.
-                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold block rounded p-2 text-sm " >IR</button>
+                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold block rounded p-2 text-md " >IR</button>
                                 </div>
                             </div>
                         </div>
