@@ -32,13 +32,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/admin', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/retiros',function (){
     return view('livewire.admin.retiros');
-
 })->name('/retiros');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/depositos',function (){
     return view('livewire.admin.depositos');
-
 })->name('/depositos');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/pago',function (){
