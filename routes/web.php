@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/tr', function () {
     return view('transacciones');
 })->name('tr.mostrar');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/tr/ps', function () {
     return view('livewire.transacciones.pago_servicio');
 })->name('pago.servicio');
