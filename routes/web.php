@@ -45,12 +45,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/depositos',function (){
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/pago',function (){
     return view('livewire.admin.pagos');
-
 })->name('/pago');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/envios',function (){
     return view('livewire.admin.envios');
-
 })->name('/envios');
 
 
