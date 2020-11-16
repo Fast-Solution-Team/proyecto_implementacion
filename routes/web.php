@@ -51,4 +51,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/envios',function (){
     return view('livewire.admin.envios');
 })->name('/envios');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/movimientos',function (){
+    return view('movimientos');
+})->name('/movimientos');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/retiroscliente',function (){
+    return view('livewire.movimientos.retiros_cliente_index');
+})->name('/retiroscliente');
+
 
