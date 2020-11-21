@@ -59,4 +59,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/retiroscliente',function 
     return view('livewire.movimientos.retiros_cliente_index');
 })->name('/retiroscliente');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/depositoscliente',function (){
+    return view('livewire.movimientos.depositos_cliente_index');
+})->name('/depositoscliente');
+
 

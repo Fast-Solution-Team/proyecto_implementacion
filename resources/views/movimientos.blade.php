@@ -22,7 +22,7 @@
                 <div class="flex flex-col float-left overflow-hidden">
                     <div class="w-64 h-screen bg-white border-r-4 border-blue-700">
                         <div class="flex items-center justify-center mt-10">
-                            <label class="font-bold text-gray-800 text-3xl border-blue-700 border-b-4">TRANSACCIONES</label>
+                            <label class="font-bold text-gray-800 text-3xl border-blue-700 border-b-4">MOVIMIENTOS</label>
                         </div>
 
                         <nav class="mt-10">
@@ -34,13 +34,31 @@
                                 <span class="mx-4 font-medium">Retiros</span>
                             </a>
 
-                            <a class="flex items-center mt-5 py-2 px-8 text-gray-600 border-r-4 border-white hover:bg-gray-200 hover:text-gray-700 hover:border-blue-500 focus:bg-gray-200 focus:text-gray-700 focus:font-bold focus:border-blue-500 focus: border-r-4" href="{{route('pago.servicio')}}">
+                            <a class="flex items-center mt-5 py-2 px-8 text-gray-600 border-r-4 border-white hover:bg-gray-200 hover:text-gray-700 hover:border-blue-500 focus:bg-gray-200 focus:text-gray-700 focus:font-bold focus:border-blue-500 focus: border-r-4" href="{{route('/depositoscliente')}}">
                                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
 
                                 <span class="mx-4 font-medium">Depositos</span>
+                            </a>
+
+                            <a class="flex items-center mt-5 py-2 px-8 text-gray-600 border-r-4 border-white hover:bg-gray-200 hover:text-gray-700 hover:border-blue-500 focus:bg-gray-200 focus:text-gray-700 focus:font-bold focus:border-blue-500 focus: border-r-4" href="{{route('pago.servicio')}}">
+                                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+
+                                <span class="mx-4 font-medium">Pago de Servicios</span>
+                            </a>
+
+                            <a class="flex items-center mt-5 py-2 px-8 text-gray-600 border-r-4 border-white hover:bg-gray-200 hover:text-gray-700 hover:border-blue-500 focus:bg-gray-200 focus:text-gray-700 focus:font-bold focus:border-blue-500 focus: border-r-4" href="{{route('pago.servicio')}}">
+                                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+
+                                <span class="mx-4 font-medium">Envio de Dinero</span>
                             </a>
                         </nav>
                     </div>
