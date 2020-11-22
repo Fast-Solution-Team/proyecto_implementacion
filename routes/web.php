@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DepositoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::resource('saldo_billetera', DepositoController::class);
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,6 +30,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/tr/ps', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/admin', function () {
     return view('admin');
@@ -54,5 +56,16 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/envios',function (){
     return view('livewire.admin.envios');
 
 })->name('/envios');
+
+
+/**Deposito 
+
+
+Route::get('/emoney', function () {
+    return view('index');
+});
+Route::get('/deposito/{iduser}', [DepositoController::class ,'index']);
+Route::put('/deposito/{iduser}', [DepositoController::class ,'update']);
+Deposito */
 
 
