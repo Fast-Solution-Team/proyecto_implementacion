@@ -47,7 +47,7 @@
             </div>
         </form>
                 <div class="text-center pt-12 pb-12">
-                    <p>No tienes una Cuenta? <a href="register.html" class="underline font-semibold">Registrate Aqui</a></p>
+                    <p>No tienes una Cuenta? <a href="{{ route('register') }}" class="underline font-semibold">Registrate Aqui</a></p>
                 </div>
             </div>
 
