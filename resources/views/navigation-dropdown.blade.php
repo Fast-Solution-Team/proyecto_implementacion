@@ -102,7 +102,7 @@
                     </x-slot>
                 </x-jet-dropdown>
                 <div class="block px-4 py-2 font-medium text-gray-500">
-                    {{Auth::user()->getSaldoUser()}}
+                    {{ __('Saldo: L.') }} {{Auth::user()->getSaldoUser()}}
                 </div>
             </div>
 

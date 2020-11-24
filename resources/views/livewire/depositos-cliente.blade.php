@@ -20,7 +20,7 @@
                         1
                     </a>
                     <a href="#" class="no-underline text-white text-lg">
-                        Pagos realizados
+                        Depositos realizados
                     </a>
                 </div>
             </div>
@@ -55,10 +55,7 @@
                     <table class="table text-grey-darkest">
                         <thead class="bg-grey-dark text-white text-normal">
                         <tr>
-                            <th scope="col">Id billetera</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Identidad</th>
-                            <th scope="col">Domicilio</th>
+
                             <th scope="col">Fecha</th>
                             <th scope="col">Monto</th>
                             <th scope="col">Saldo anterior</th>
@@ -71,10 +68,7 @@
 
                             <tr>
 
-                                <td>{{$value->ID_BILLETERA}}</td>
-                                <td>{{$value->name}} {{$value->second_name}} {{$value->lastname}} {{$value->second_lastname}}</td>
-                                <td>{{$value->identidad}}</td>
-                                <td>{{$value->direccion}}</td>
+
                                 <td>{{$value->FECHA_MOVIMIENTO}}</td>
                                 <td>{{$value->MONTO_TRANSACCION}}</td>
                                 <td>{{$value->SALDO_ANTERIOR}}</td>
