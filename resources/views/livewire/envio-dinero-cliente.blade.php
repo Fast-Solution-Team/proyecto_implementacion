@@ -67,14 +67,12 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @if($countUsuario > 0 )
-                        @foreach($envioscliente as $value )
+                         @foreach($envioscliente as $value )
 
                              <tr>
 
                                 <td>{{$value->ID_BILLETERA_DESTINO}}</td>
-
-                                <td>{{$value->destino[0]['name']}} {{$value->destino[0]['second_name']}} {{$value->destino[0]['lastname']}} {{$value->destino[0]['second_lastname']}}</td>
+                                 <td>{{$value->name}} {{$value->second_name}} {{$value->lastname}} {{$value->second_lastname}}</td>
                                 <td>{{$value->FECHA_MOVIMIENTO}}</td>
                                 <td>{{$value->MONTO_TRANSACCION}}</td>
                                 <td>{{$value->SALDO_ANTERIOR}}</td>
@@ -84,7 +82,6 @@
                             </tr>
 
                         @endforeach
-                             @endif
 
 
                         </tbody>
