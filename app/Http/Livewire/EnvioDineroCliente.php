@@ -57,6 +57,6 @@ class EnvioDineroCliente extends Component
             ->orwhere('movimientos_billeteras.SALDO_POSTERIOR', 'like', '%'.$this->search.'%')
             ->where('transacciones.TIPO_TRANSACCION', '=','ED')
             ->where('transacciones.id_billetera', '=', Auth::user()->id_billetera)->get();
-        
+
         return view('livewire.envio-dinero-cliente')->with('envioscliente', $this->envioscliente);    }
 }

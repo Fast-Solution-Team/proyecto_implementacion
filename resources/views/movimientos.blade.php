@@ -57,6 +57,12 @@
 
                                 <span class="mx-4 font-medium">Envio de Dinero</span>
                             </a>
+
+                            <a class="flex items-center mt-5 py-2 px-8 text-gray-600 border-r-4 border-white hover:bg-gray-200 hover:text-gray-700 hover:border-blue-500 focus:bg-gray-200 focus:text-gray-700 focus:font-bold focus:border-blue-500 focus: border-r-4" href="{{route('/recibidoscliente')}}">
+                                <svg class="h-6 w-6 text-gray-600"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <line x1="12" y1="1" x2="12" y2="23" />  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
+
+                                <span class="mx-4 font-medium">Dinero Recibido</span>
+                            </a>
                         </nav>
                     </div>
                 </div>
