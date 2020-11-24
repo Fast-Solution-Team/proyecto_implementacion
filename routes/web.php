@@ -71,4 +71,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/envioscliente',function (
     return view('livewire.movimientos.envio_cliente_index');
 })->name('/envioscliente');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/recibidoscliente',function (){
+    return view('livewire.movimientos.recibidos_cliente_index');
+})->name('/recibidoscliente');
+
 
