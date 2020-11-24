@@ -27,7 +27,7 @@
                                 <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                             </button>
                         @else
-                            <button class="flex items-center text-sm font-medium text-gray-500 hover:text-yellow-400 hover:border-gray-300 focus:outline-none focus:text-yellow-400 focus:border-gray-300 transition duration-500 ease-in-out">
+                            <button class="flex items-center text-sm font-bold text-gray-500 hover:text-yellow-400 hover:border-gray-300 focus:outline-none focus:text-yellow-400 focus:border-gray-300 transition duration-500 ease-in-out">
                                 <div>{{ Auth::user()->name .' '. Auth::user()->lastname}}</div>
 
                                 <div class="ml-1">
@@ -42,7 +42,7 @@
                     </x-slot>
                     <x-slot name="content">
                         <!-- Account Management -->
-                        <div class="block px-4 py-2 text-xs text-gray-400">
+                        <div class="block px-4 py-2 text-xs text-white font-bold uppercase">
                             {{ __('Cuenta') }}
                         </div>
 
@@ -101,7 +101,7 @@
                         </form>
                     </x-slot>
                 </x-jet-dropdown>
-                <div class="block px-4 py-2 font-medium text-gray-500">
+                <div class="block px-4 py-2 font-bold text-gray-500">
                     {{ __('Saldo: L.') }} {{Auth::user()->getSaldoUser()}}
                 </div>
             </div>
