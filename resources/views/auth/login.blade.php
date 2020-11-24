@@ -1,6 +1,5 @@
 <x-guest-layout>
 
-        <x-jet-validation-errors class="mb-4" />
 
         @if (session('status'))
             <div class="mb-4 font-medium text-sm text-green-600">
@@ -15,9 +14,9 @@
             <div class="flex justify-center md:justify-start pt-12 md:pl-12 md:-mb-24">
                 <a href="#" class="bg-black text-white font-bold text-xl p-4">Logo</a>
             </div>
-
             <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
                 <p class="font-bold uppercase text-gray-800 text-center text-3xl">Bienvenido</p>
+                <x-jet-validation-errors class="mb-4" />
         <form method="POST"  class="flex flex-col pt-3 md:pt-8" action="{{ route('login') }}">
             @csrf
             <div class="flex flex-col pt-4">
