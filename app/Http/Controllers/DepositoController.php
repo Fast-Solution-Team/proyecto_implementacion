@@ -10,19 +10,21 @@ class DepositoController extends Controller
 {
     
     //
-    public function index(Request $request) {
+    public function index() {
         
+        $iduser = 'HN0001';
 
-        $saldobilletera = DB::select('SELECT * FROM emoney.saldo_billetera WHERE ID_BILLETERA = ?', [$request->iduser]);
+        $saldobilletera = DB::select('SELECT * FROM emoney.saldo_billetera WHERE ID_BILLETERA = ?', [$iduser]);
        
-        $idcliente = DB::select('SELECT ID_CLIENTE FROM emoney.billeteras_clientes WHERE ID_BILLETERA = ?', [$request->iduser]);
+        $idcliente = DB::select('SELECT ID_CLIENTE FROM emoney.billeteras_clientes WHERE ID_BILLETERA = ?', [$iduser]);
 
         $usuario = DB::select('SELECT CONCAT(PRIMER_NOMBRE," ",PRIMER_APELLIDO) AS usuario FROM emoney.clientes WHERE ID_CLIENTE = ?', [$idcliente[0]->ID_CLIENTE]);
 
-        return view('deposito',
-            ['saldo'=> $saldobilletera[0]->SALDO_BILLETERA,
-                'usuario'=> $usuario[0]->usuario,
-                 'id' => $request->iduser]);
+        $datos = ['saldo'=> $saldobilletera[0]->SALDO_BILLETERA,
+        'usuario'=> $usuario[0]->usuario,
+         'id' => $iduser];
+        
+        return view('livewire.transacciones.deposito_efectivo', $datos);
     
     }
 
@@ -40,16 +42,17 @@ class DepositoController extends Controller
             $var = "Monto invalido";
             echo "<script> alert('".$var."'); </script>";
         
-            $saldobilletera = DB::select('SELECT SALDO_BILLETERA FROM emoney.saldo_billetera WHERE ID_BILLETERA = ?', [$request->idusu]);
+            $saldobilletera = DB::select('SELECT SALDO_BILLETERA FROM emoney.saldo_billetera WHERE ID_BILLETERA = ?', [$request->id]);
 
-            return view('deposito',['saldo'=> $saldobilletera[0]->SALDO_BILLETERA,
-            'usuario'=> $request->cliente,
-            'id' => $request->idusu]);
+            $datos = ['saldo'=> $saldobilletera[0]->SALDO_BILLETERA,
+            'usuario'=> $request->usuario,
+            'id' => $request->id];
             
+            return view('livewire.transacciones.deposito_efectivo', $datos);
         }
 
      
-        $saldobilletera = DB::select('SELECT SALDO_BILLETERA FROM emoney.saldo_billetera WHERE ID_BILLETERA = ?', [$request->idusu]);
+        $saldobilletera = DB::select('SELECT SALDO_BILLETERA FROM emoney.saldo_billetera WHERE ID_BILLETERA = ?', [$request->id]);
     
 
 
@@ -58,11 +61,13 @@ class DepositoController extends Controller
                 $var = "Maximo deposito es de Lps. 20000.00";
                 echo "<script> alert('".$var."'); </script>";
             
-                $saldobilletera = DB::select('SELECT SALDO_BILLETERA FROM emoney.saldo_billetera WHERE ID_BILLETERA = ?', [$request->idusu]);
+                $saldobilletera = DB::select('SELECT SALDO_BILLETERA FROM emoney.saldo_billetera WHERE ID_BILLETERA = ?', [$request->id]);
 
-                return view('deposito',['saldo'=> $saldobilletera[0]->SALDO_BILLETERA,
-                'usuario'=> $request->cliente,
-                'id' => $request->idusu]);
+                $datos = ['saldo'=> $saldobilletera[0]->SALDO_BILLETERA,
+                'usuario'=> $request->usuario,
+                'id' => $request->id];
+                
+                return view('livewire.transacciones.deposito_efectivo', $datos);
             }
 
             $monto_total= $saldobilletera[0]->SALDO_BILLETERA + $request->cantidad_dp;
@@ -70,14 +75,16 @@ class DepositoController extends Controller
             $var = "Minimo deposito es de Lps. 100.00";
             echo "<script> alert('".$var."'); </script>";
         
-            $saldobilletera = DB::select('SELECT SALDO_BILLETERA FROM emoney.saldo_billetera WHERE ID_BILLETERA = ?', [$request->idusu]);
+            $saldobilletera = DB::select('SELECT SALDO_BILLETERA FROM emoney.saldo_billetera WHERE ID_BILLETERA = ?', [$request->id]);
 
-            return view('deposito',['saldo'=> $saldobilletera[0]->SALDO_BILLETERA,
-            'usuario'=> $request->cliente,
-            'id' => $request->idusu]);
+            $datos = ['saldo'=> $saldobilletera[0]->SALDO_BILLETERA,
+            'usuario'=> $request->usuario,
+            'id' => $request->id];
+            
+            return view('livewire.transacciones.deposito_efectivo', $datos);
         }
         
-        $update = DB::update('UPDATE emoney.saldo_billetera set SALDO_BILLETERA = ? where ID_BILLETERA = ?', [$monto_total,$request->idusu]);
+        $update = DB::update('UPDATE emoney.saldo_billetera set SALDO_BILLETERA = ? where ID_BILLETERA = ?', [$monto_total,$request->id]);
 
         if($update > -1){
                 $var = "Deposito exitoso";
@@ -90,7 +97,7 @@ class DepositoController extends Controller
                 $mytime = Carbon::now();
                 
 
-                DB::insert('insert into emoney.transacciones(ID_TRANSACCION, FECHA_TRANSACCION, ID_BILLETERA, TIPO_TRANSACCION, ID_SERVICIO, ESTADO_TRANSACCION, ID_ERROR, USU_CRE, FEC_CRE) values (?,?,?,?,?,?,?,?,?)', [$conteot+1, $mytime,$request->idusu,'DP',1,'A',1, 'su',$mytime]);
+                DB::insert('insert into emoney.transacciones(ID_TRANSACCION, FECHA_TRANSACCION, ID_BILLETERA, TIPO_TRANSACCION, ID_SERVICIO, ESTADO_TRANSACCION, ID_ERROR, USU_CRE, FEC_CRE) values (?,?,?,?,?,?,?,?,?)', [$conteot+1, $mytime,$request->id,'DP',1,'A',1, 'su',$mytime]);
                
                
                 DB::insert('insert into emoney.movimientos_billeteras( ID_MOVIMIENTO, FECHA_MOVIMIENTO, ID_TRANSACCION, MONTO_TRANSACCION, SALDO_ANTERIOR, SALDO_POSTERIOR, USU_CRE, FEC_CRE)
@@ -98,11 +105,13 @@ class DepositoController extends Controller
                
                 
 
-                $saldobilletera = DB::select('SELECT SALDO_BILLETERA FROM emoney.saldo_billetera WHERE ID_BILLETERA = ?', [$request->idusu]);
+                $saldobilletera = DB::select('SELECT SALDO_BILLETERA FROM emoney.saldo_billetera WHERE ID_BILLETERA = ?', [$request->id]);
     
-                return view('deposito',['saldo'=> $saldobilletera[0]->SALDO_BILLETERA,
-                'usuario'=> $request->cliente,
-                'id' => $request->idusu]);
+                $datos = ['saldo'=> $saldobilletera[0]->SALDO_BILLETERA,
+                'usuario'=> $request->usuario,
+                'id' => $request->id];
+                
+                return view('livewire.transacciones.deposito_efectivo', $datos);
         }
         else{
            return 'fallo' ;

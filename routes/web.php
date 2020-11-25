@@ -26,6 +26,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/tr/ps', function () {
     return view('livewire.transacciones.pago_servicio');
 })->name('pago.servicio');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/tr/de/',
+[DepositoController::class ,'index'])->name('deposito.efectivo');
+
+Route::middleware(['auth:sanctum', 'verified'])->put('/tr/de/{id}',
+[DepositoController::class ,'update'])->name('deposito.update');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -57,15 +62,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/envios',function (){
 
 })->name('/envios');
 
-
-/**Deposito 
-
-
 Route::get('/emoney', function () {
     return view('index');
 });
 Route::get('/deposito/{iduser}', [DepositoController::class ,'index']);
 Route::put('/deposito/{iduser}', [DepositoController::class ,'update']);
-Deposito */
+
 
 
