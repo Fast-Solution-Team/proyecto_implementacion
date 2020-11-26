@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./dist/styles.css">
     <link rel="stylesheet" href="./dist/all.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i" rel="stylesheet">
-    <title>Dashboard | Tailwind Admin</title>
+    <title>Administrador</title>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
             <div class="flex justify-between">
                 <div class="p-1 mx-3 inline-flex items-center">
                     <i class="fas fa-bars pr-2 text-white" onclick="sidebarToggle()"></i>
-                    <h1 class="text-white p-2">Logo</h1>
+                    <a href="{{route('/admin')}}" class="text-white p-2">Inicio</a>
                 </div>
                 <div class="p-1 flex flex-row items-center">
 
@@ -58,14 +58,7 @@
                 </form>
 
                 <ul class="list-reset flex flex-col">
-                    <li class=" w-full h-full py-3 px-2 border-b border-light-border bg-white">
-                        <a href="{{route('/admin')}}"
-                           class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                            <i class="fas fa-tachometer-alt float-left mx-2"></i>
-                            Inicio
-                            <span><i class="fas fa-angle-right float-right"></i></span>
-                        </a>
-                    </li>
+
                     <li class="w-full h-full py-3 px-2 border-b border-light-border">
                         <a href="{{route('/retiros')}}"
                            class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">

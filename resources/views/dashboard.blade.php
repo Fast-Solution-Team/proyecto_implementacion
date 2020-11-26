@@ -76,7 +76,7 @@
                                 </div>
 
                                 <div class="summary-post text-base text-justify">Te ayudara a obtener mayor información específica sobre alguna transacción que hayas realizado.
-                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold block rounded p-2 text-md " >IR</button>
+                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold block rounded p-2 text-md " ><a href="{{route('/movimientos')}}">IR</a></button>
                                 </div>
                             </div>
                         </div>
