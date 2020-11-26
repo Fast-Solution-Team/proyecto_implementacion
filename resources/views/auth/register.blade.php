@@ -149,7 +149,7 @@
         <!-- Image Section -->
         <div class="w-1/2 shadow-2xl">
             <img class="responsive-img"
-                 src="https://pixabay.com/get/57e0d6424b52ad14ead98d7fc421337f1c22dfe3535770417c277bdc.jpg">
+                 src="https://source.unsplash.com/IXUM4cJynP0">
         </div>
     </div>
 </x-guest-layout>
