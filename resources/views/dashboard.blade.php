@@ -4,7 +4,6 @@
 {{--            {{ __('Esta sera la pagina de inicio') }}--}}
 {{--        </h2>--}}
 {{--    </x-slot>--}}
-    <link href="https://unpkg.com/tailwindcss@1.6.2/dist/tailwind.min.css" rel="stylesheet">
     <style>
         .w-70 {
             width: 20rem;
