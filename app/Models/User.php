@@ -62,8 +62,7 @@ class User extends Authenticatable
     ];
 
     public function getSaldoAttribute(){
-        $id_billetera = Billetera::where('BILLETERA_ASIGNADA', $this->id_billetera)->pluck('ID_BILLETERA')->first();
-        $saldo = SaldoBilletera::where('ID_BILLETERA', $id_billetera)->pluck('SALDO_BILLETERA')->first();
+        $saldo = SaldoBilletera::where('ID_BILLETERA', $this->id_billetera)->pluck('SALDO_BILLETERA')->first();
         return $saldo;
     }
 }
