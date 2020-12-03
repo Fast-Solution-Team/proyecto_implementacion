@@ -25,7 +25,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'id_billetera',
+        'name', 'second_name','lastname', 'second_lastname',
+        'fec_nac', 'identidad', 'sexo', 'estado_cliente',
+        'id_billetera','direccion',
+        'email', 'password',
     ];
 
     /**
@@ -58,9 +61,8 @@ class User extends Authenticatable
         'profile_photo_url', 'saldo',
     ];
 
-    public function getSaldoUser(){
-        $id_billetera = Billetera::where('BILLETERA_ASIGNADA', $this->id_billetera)->pluck('ID_BILLETERA')->first();
-        $saldo = SaldoBilletera::where('ID_BILLETERA', $id_billetera)->pluck('SALDO_BILLETERA')->first();
+    public function getSaldoAttribute(){
+        $saldo = SaldoBilletera::where('ID_BILLETERA', $this->id_billetera)->pluck('SALDO_BILLETERA')->first();
         return $saldo;
     }
 }
