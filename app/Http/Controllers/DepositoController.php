@@ -54,7 +54,7 @@ class DepositoController extends Controller
         }
 
      
-        $saldobilletera = DB::select('SELECT SALDO_BILLETERA FROM emoney.saldo_billetera WHERE ID_BILLETERA = ?', [$request->id]);
+        $saldoanterioirbilletera = Auth::user()->getSaldoAttribute();
     
 
 
@@ -99,7 +99,7 @@ class DepositoController extends Controller
                
                
                 DB::insert('insert into emoney.movimientos_billeteras( ID_MOVIMIENTO, FECHA_MOVIMIENTO, ID_TRANSACCION, MONTO_TRANSACCION, SALDO_ANTERIOR, SALDO_POSTERIOR, USU_CRE, FEC_CRE)
-                 values (?,?,?,?,?,?,?,?)', [$conteom+1, $mytime,$conteot+1,$request->cantidad_dp,Auth::user()->getSaldoAttribute(),$monto_total, 'su',$mytime]);
+                 values (?,?,?,?,?,?,?,?)', [$conteom+1, $mytime,$conteot+1,$request->cantidad_dp,$saldoanterioirbilletera,$monto_total, 'su',$mytime]);
                
                 
 
