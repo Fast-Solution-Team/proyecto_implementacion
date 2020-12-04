@@ -65,4 +65,6 @@ class User extends Authenticatable
         $saldo = SaldoBilletera::where('ID_BILLETERA', $this->id_billetera)->pluck('SALDO_BILLETERA')->first();
         return $saldo;
     }
+
+    
 }

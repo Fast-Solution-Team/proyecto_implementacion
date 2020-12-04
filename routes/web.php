@@ -80,3 +80,15 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/servicioenviodinero',func
 })->name('/servicioenviodinero');
 
 
+
+
+use App\Http\Controllers\DepositoController;
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/tr/de/',
+[DepositoController::class ,'index'])->name('deposito.efectivo');
+
+Route::middleware(['auth:sanctum', 'verified'])->put('/tr/de/{id}',
+[DepositoController::class ,'update'])->name('deposito.update');
+
+
+
