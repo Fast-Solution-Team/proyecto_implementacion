@@ -38,9 +38,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/retiros',function (){
     return view('livewire.admin.retiros');
 })->name('/retiros');
 
-//Route::middleware(['auth:sanctum', 'verified'])->get('/depositos',function (){
-//    return view('livewire.admin.depositos');
-//})->name('/depositos');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/depositos',function (){
+    return view('livewire.admin.depositos');
+})->name('/depositos');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/pago',function (){
     return view('livewire.admin.pagos');
@@ -83,11 +84,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/servicioenviodinero',func
 
 use App\Http\Controllers\DepositoController;
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/depositos',
-[DepositoController::class ,'index'])->name('depositos.index');
+Route::middleware(['auth:sanctum', 'verified'])->get('/tr/de/',
+[DepositoController::class ,'index'])->name('deposito.efectivo');
 
-Route::middleware(['auth:sanctum', 'verified'])->put('/depositos/{id}',
-[DepositoController::class ,'update'])->name('depositos.update');
+Route::middleware(['auth:sanctum', 'verified'])->put('/tr/de/{id}',
+[DepositoController::class ,'update'])->name('deposito.update');
 
 
 

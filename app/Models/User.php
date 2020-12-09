@@ -9,7 +9,6 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -65,14 +64,6 @@ class User extends Authenticatable
     public function getSaldoAttribute(){
         $saldo = SaldoBilletera::where('ID_BILLETERA', $this->id_billetera)->pluck('SALDO_BILLETERA')->first();
         return $saldo;
-    }
-
-    public function getNumDepositos(){
-
-        $depositos = DB::select('SELECT * FROM emoney.transacciones where ID_BILLETERA = ? and TIPO_TRANSACCION = "DP"', [ $this->id_billetera]);
-        $conteo_deposito = count($depositos);
-      
-        return $conteo_deposito;
     }
 
     
