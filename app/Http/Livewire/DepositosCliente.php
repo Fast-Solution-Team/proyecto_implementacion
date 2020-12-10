@@ -35,6 +35,23 @@ class DepositosCliente extends Component
             ->where('transacciones.TIPO_TRANSACCION', '=','DP')
             ->where('users.id_billetera', '=', Auth::user()->id_billetera)->get();
 
-        return view('livewire.depositos-cliente')->with('depositoscliente', $this->depositoscliente);
-    }
+        // consulta sin los where
+        $totaldepositos = DB::table('movimientos_billeteras')
+            ->join('transacciones', 'movimientos_billeteras.ID_TRANSACCION', '=', 'transacciones.ID_TRANSACCION')
+            ->join('users', 'users.id_billetera', '=', 'transacciones.ID_BILLETERA')
+            ->select('movimientos_billeteras.*','transacciones.*' ,'users.*')
+            ->where('transacciones.TIPO_TRANSACCION', '=','DP')
+            ->where('users.id_billetera', '=', Auth::user()->id_billetera)->get();
+
+        // count recibidos contiene todas las transaciones que se han hecho
+        $countDepositos =$totaldepositos->count();
+
+        $totalDepositos= 0;
+        foreach ($totaldepositos as $value){
+            $totalDepositos = $totalDepositos + $value->MONTO_TRANSACCION;
+
+        }
+
+        return view('livewire.depositos-cliente')->with('depositoscliente', $this->depositoscliente)
+            ->with('countDepositos', $countDepositos)->with('totalDepositos', $totalDepositos);    }
 }

@@ -3,8 +3,11 @@
 namespace App\Http\Livewire;
 
 use App\Models\Billetera;
+use App\Models\Movimiento;
+use App\Models\SaldoBilletera;
 use App\Models\Transaccion;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -32,9 +35,9 @@ class ServicioEnvioDinero extends Component
             'billetera' => 'required',
             'monto' => 'required'
 
-            ], $messages = [
-                'billtera.required' => 'La billetera es requerida para hacer el envio',
-                'monto.required' => 'El monto es requerido para enviar el dinero'
+        ], $messages = [
+            'billtera.required' => 'La billetera es requerida para hacer el envio',
+            'monto.required' => 'El monto es requerido para enviar el dinero'
         ]);
 
         $comprobarbilletera = Billetera::where('ID_BILLETERA', $this->billetera)->count();
@@ -47,15 +50,15 @@ class ServicioEnvioDinero extends Component
 
                 if(Auth::user()->id_billetera == $this->billetera){
 
-                    $this->errorEnvio = 'No puede enviarse dinero a su misma billetera no sea bruto';
+                    $this->errorEnvio = 'No puede enviar dinero a su misma billetera';
                     $this->openErrorBilletera = 'openErrorBilletera';
                 }else {
 
                     $comprobarSaldo = Auth::user()->getSaldoAttribute() - $this->monto;
-                    if ($comprobarSaldo > 0) {
+                    if ($comprobarSaldo >= 0) {
 
                         $cliente = User::where('id_billetera', $this->billetera)->get();
-                        $this->datos_usuario = 'Seguro que quiere enviar dinero a: ' . $cliente[0]['name'].' '
+                        $this->datos_usuario = 'Seguro que quiere enviar dinero a: ' .$cliente[0]['name'].' '
                             .$cliente[0]['second_name'].' '.$cliente[0]['lastname'].' '.$cliente[0]['second_lastname'];
 
                         $this->openConfirmarEnvio = 'abrir';
@@ -77,12 +80,49 @@ class ServicioEnvioDinero extends Component
             $this->errorEnvio = 'La billetera no existe en el registro';
             $this->openErrorBilletera = 'openErrorBilletera';
 
-         }
+        }
     }
     public function  confirmarEnvio(){
+        $date = Carbon::now();
 
+        $transaccion = new Transaccion();
+        $transaccion->FECHA_TRANSACCION = $date;
+        $transaccion->ID_BILLETERA = Auth::user()->id_billetera;
+        $transaccion->ID_BILLETERA_DESTINO = $this->billetera;
+        $transaccion->TIPO_TRANSACCION = 'ED';
+        $transaccion->FEC_CRE = $date;
+        $transaccion->ESTADO_TRANSACCION = 'E';
+        $transaccion->USU_CRE = Auth::user()->id_billetera;
 
+        $transaccion->save();
 
+        $movimiento = new Movimiento();
+
+        $saldo_posterior =  Auth::user()->getSaldoAttribute() -$this->monto;
+        $movimiento->FECHA_MOVIMIENTO = $date;
+        $movimiento->ID_TRANSACCION = $transaccion->id; // relacion entre la tabla transacciones y movimientos
+        $movimiento->MONTO_TRANSACCION = $this->monto;
+        $movimiento->SALDO_ANTERIOR = Auth::user()->getSaldoAttribute();
+        $movimiento->SALDO_POSTERIOR = $saldo_posterior ;
+        $movimiento->USU_CRE = Auth::user()->id_billetera;
+        $movimiento->FEC_CRE = $date;
+
+        $movimiento->save();
+
+        // actualizacion del campo saldo
+        SaldoBilletera::where('ID_BILLETERA', Auth::user()->id_billetera)->update(['SALDO_BILLETERA' => $saldo_posterior]);
+
+        // recuperar el saldo que tiene actualmente la billetera destino
+        $saldoAnteriorBilleteraDestino = SaldoBilletera::where('ID_BILLETERA', $this->billetera)->pluck('SALDO_BILLETERA')->first();
+
+        // suma para el saldo billetera destino
+        $saldoPosteriorBilleteraDestino = $saldoAnteriorBilleteraDestino + $this->monto;
+
+        // actualizacion del campo saldo billetera por el saldo posterior
+        SaldoBilletera::where('ID_BILLETERA', $this->billetera)->update(['SALDO_BILLETERA' => $saldoPosteriorBilleteraDestino]);
+
+       // retorna para recargar la pagina y actualiza el saldo
+        return redirect('servicioenviodinero');
     }
 
     public function cerrarModal(){
