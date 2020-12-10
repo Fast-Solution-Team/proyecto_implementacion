@@ -28,5 +28,27 @@
                </div>
            </div>
     </div>
+    <div>
+        @if (session()->has('ok'))
+            <div class="alert alert-success">
+                @include('livewire.transacciones.ok_notificacion')
+            </div>
+        @endif
+        @if (session()->has('error1'))
+                <div class="alert alert-success">
+                    @include('livewire.transacciones.error_notificacion')
+                </div>
+            @endif
+            @if (session()->has('error2'))
+                <div class="alert alert-success">
+                    @include('livewire.transacciones.error_notificacion')
+                </div>
+            @endif
+            @if (session()->has('error3'))
+                <div class="alert alert-success">
+                    @include('livewire.transacciones.error_notificacion')
+                </div>
+            @endif
+    </div>
 
 </div>

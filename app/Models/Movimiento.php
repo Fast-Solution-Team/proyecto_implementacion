@@ -14,4 +14,6 @@ class Movimiento extends Model
         'ID_MOVIMIENTO', 'FECHA_MOVIMIENTO', 'ID_TRANSACCION', 'MONTO_TRANSACCION', 'SALDO_ANTERIOR', 'SALDO_POSTERIOR'
         , 'USU_CRE', 'FEC_CRE', 'USU_MOD', 'FEC_MOD',
     ];
+    const CREATED_AT = false;
+    const UPDATED_AT = false;
 }
