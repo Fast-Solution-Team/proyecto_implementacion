@@ -39,6 +39,23 @@ class PagoServicioCliente extends Component
             ->where('transacciones.TIPO_TRANSACCION', '=','PS')
             ->where('users.id_billetera', '=', Auth::user()->id_billetera)->get();
 
-        return view('livewire.pago-servicio-cliente')->with('pagoscliente', $this->pagoscliente);
-    }
+        // consulta sin los where
+        $totalpagos = DB::table('movimientos_billeteras')
+            ->join('transacciones', 'movimientos_billeteras.ID_TRANSACCION', '=', 'transacciones.ID_TRANSACCION')
+            ->join('users', 'users.id_billetera', '=', 'transacciones.ID_BILLETERA')
+            ->select('movimientos_billeteras.*','transacciones.*' ,'users.*')
+            ->where('transacciones.TIPO_TRANSACCION', '=','PS')
+            ->where('users.id_billetera', '=', Auth::user()->id_billetera)->get();
+
+        // count recibidos contiene todas las transaciones que se han hecho
+        $countPagos =$totalpagos->count();
+
+        $totalPagos= 0;
+        foreach ($totalpagos as $value){
+            $totalPagos = $totalPagos + $value->MONTO_TRANSACCION;
+
+        }
+
+        return view('livewire.pago-servicio-cliente')->with('pagoscliente', $this->pagoscliente)
+            ->with('countPagos', $countPagos)->with('totalPagos', $totalPagos);    }
 }

@@ -58,5 +58,23 @@ class EnvioDineroCliente extends Component
             ->where('transacciones.TIPO_TRANSACCION', '=','ED')
             ->where('transacciones.id_billetera', '=', Auth::user()->id_billetera)->get();
 
-        return view('livewire.envio-dinero-cliente')->with('envioscliente', $this->envioscliente);    }
+        // consulta sin los where
+        $totalenvios = DB::table('movimientos_billeteras')
+            ->join('transacciones', 'movimientos_billeteras.ID_TRANSACCION', '=', 'transacciones.ID_TRANSACCION')
+            ->join('users', 'users.id_billetera', '=', 'transacciones.ID_BILLETERA')
+            ->select('movimientos_billeteras.*','transacciones.*' ,'users.*')
+            ->where('transacciones.TIPO_TRANSACCION', '=','ED')
+            ->where('transacciones.id_billetera', '=', Auth::user()->id_billetera)->get();
+
+        // count recibidos contiene todas las transaciones que se han hecho
+        $countEnvios =$totalenvios->count();
+
+        $totalEnvios= 0;
+        foreach ($totalenvios as $value){
+            $totalEnvios = $totalEnvios + $value->MONTO_TRANSACCION;
+
+        }
+
+        return view('livewire.envio-dinero-cliente')->with('envioscliente', $this->envioscliente)
+            ->with('countEnvios', $countEnvios)->with('totalEnvios', $totalEnvios);    }
 }
