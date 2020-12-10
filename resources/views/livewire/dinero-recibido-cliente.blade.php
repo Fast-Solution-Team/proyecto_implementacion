@@ -5,7 +5,7 @@
             <div class="shadow-lg bg-red-vibrant border-l-8 hover:bg-red-vibrant-dark border-red-vibrant-dark mb-2 p-2 md:w-1/4 mx-2">
                 <div class="p-4 flex flex-col">
                     <a href="#" class="no-underline text-white text-2xl">
-                        Lps 10000
+                        {{$totalRecibido}}
                     </a>
                     <a href="#" class="no-underline text-white text-lg">
                         Total
@@ -16,7 +16,7 @@
             <div class="shadow bg-info border-l-8 hover:bg-info-dark border-info-dark mb-2 p-2 md:w-1/4 mx-2">
                 <div class="p-4 flex flex-col">
                     <a href="#" class="no-underline text-white text-2xl">
-                        1
+                        {{$countRecibidos}}
                     </a>
                     <a href="#" class="no-underline text-white text-lg">
                         Recibidos
@@ -61,8 +61,7 @@
                             <th scope="col">Nombre de la persona</th>
                             <th scope="col">Fecha</th>
                             <th scope="col">Monto</th>
-                            <th scope="col">Saldo anterior</th>
-                            <th scope="col">Saldo posterior</th>
+
 
                         </tr>
                         </thead>
@@ -75,8 +74,7 @@
                                 <td>{{$value->name}} {{$value->second_name}} {{$value->lastname}} {{$value->second_lastname}}</td>
                                 <td>{{$value->FECHA_MOVIMIENTO}}</td>
                                 <td>{{$value->MONTO_TRANSACCION}}</td>
-                                <td>{{$value->SALDO_ANTERIOR}}</td>
-                                <td>{{$value->SALDO_POSTERIOR}}</td>
+
 
 
                             </tr>

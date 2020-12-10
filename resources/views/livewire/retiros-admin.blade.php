@@ -6,10 +6,10 @@
             <div class="shadow-lg bg-red-vibrant border-l-8 hover:bg-red-vibrant-dark border-red-vibrant-dark mb-2 p-2 md:w-1/4 mx-2">
                 <div class="p-4 flex flex-col">
                     <a href="#" class="no-underline text-white text-2xl">
-                        Lps 10000
+                        {{$totalRetirosAdmin}}
                     </a>
                     <a href="#" class="no-underline text-white text-lg">
-                        Saldo
+                        Total
                     </a>
                 </div>
             </div>
@@ -17,10 +17,10 @@
             <div class="shadow bg-info border-l-8 hover:bg-info-dark border-info-dark mb-2 p-2 md:w-1/4 mx-2">
                 <div class="p-4 flex flex-col">
                     <a href="#" class="no-underline text-white text-2xl">
-                        1
+                        {{$countRetirosAdmin}}
                     </a>
                     <a href="#" class="no-underline text-white text-lg">
-                        retiros realizados
+                        Retiros Realizados
                     </a>
                 </div>
             </div>
@@ -28,7 +28,6 @@
 
 
         </div>
-
         <!-- /Stats Row Ends Here -->
 
         <!-- Card Sextion Starts Here -->
