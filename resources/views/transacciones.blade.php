@@ -50,7 +50,7 @@
 
                                 <span class="mx-4 font-medium">Pago de Servicios</span>
                             </a>
-                           
+
                         </nav>
                     </div>
                 </div>
@@ -65,6 +65,7 @@
 
         </div>
         @stack('modals')
+
     </body>
 
 
