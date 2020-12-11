@@ -12,7 +12,7 @@ use App\Models\User;
 use App\Models\SaldoBilletera;
 class ComponetPagoServicio extends Component
 {
-    public $servicio, $monto;
+    public $servicio, $monto,$mensaje_modal,$servicio_pagar,$monto_pagar,$abrir_modal;
 
     protected $rules = [
         'servicio' => 'required',
@@ -30,6 +30,15 @@ class ComponetPagoServicio extends Component
     }
     public function store(){
         if($this->validate()){
+            $ser=DB::table('servicios')->select('nombre')->where('id_servicio', $this->servicio)->first();
+            $this->abrir_modal = 'abrir';
+            $this->mensaje_modal= 'Esta Seguro que quiere realizar el Siguiente pago:  ';
+            $this->servicio_pagar = 'Servicio:'.'   '.$ser->nombre;
+            $this->monto_pagar = 'Monto:'.'     '.$this->monto;
+        }
+    }
+    public function confirmarPago(){
+        if($this->validate()){
             $now = new \DateTime();
             $estado_billetera=DB::table('billeteras')->select('billetera_asignada')->where('id_billetera', Auth::user()->id_billetera)->first();
             $estado_cliente = DB::table('users')->select('estado_cliente')->where('id_billetera', Auth::user()->id_billetera)->first();
@@ -44,14 +53,14 @@ class ComponetPagoServicio extends Component
                 session()->flash('error3', 'FALLO: La Billetera no Cuenta con Suficiente Dinero para Realizar el Pago!!.');
             }
             if($estado_billetera->billetera_asignada == 'S' && $estado_cliente->estado_cliente == 'A' && Auth::user()->getSaldoAttribute() > $this->monto){
-                    Transaccion::insert([
-                'fecha_transaccion'=> $now->format('Y-m-d H:i:s'),
-                'id_billetera'=> Auth::user()->id_billetera,
-                'tipo_transaccion'=> 'PS',
-                'id_servicio'=>$this->servicio,
-                'estado_transaccion'=>'E',
-                'usu_cre'=>'@admin',
-                'fec_cre'=>$now->format('Y-m-d H:i:s')
+                Transaccion::insert([
+                    'fecha_transaccion'=> $now->format('Y-m-d H:i:s'),
+                    'id_billetera'=> Auth::user()->id_billetera,
+                    'tipo_transaccion'=> 'PS',
+                    'id_servicio'=>$this->servicio,
+                    'estado_transaccion'=>'E',
+                    'usu_cre'=>'@admin',
+                    'fec_cre'=>$now->format('Y-m-d H:i:s')
                 ]);
 
                 $ide=DB::table('transacciones')->select('id_transaccion')->orderBy('id_transaccion', 'desc')->first();
@@ -73,11 +82,13 @@ class ComponetPagoServicio extends Component
                         'usu_mod'=>'@admin',
                         'fec_mod'=>$now->format('Y-m-d H:i:s')
                     ]);
+                $this->abrir_modal = '';
                 session()->flash('ok', 'Transaccion Efectuada Exitosamente.');
-
             }
-
         }
+    }
 
+    public function cerrarModal(){
+        $this->abrir_modal = '';
     }
 }

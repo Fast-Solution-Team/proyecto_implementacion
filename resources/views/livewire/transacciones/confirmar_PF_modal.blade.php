@@ -1,81 +1,30 @@
-{{--<x-jet-confirmation-modal wire:click="ComponentPagoServicio">--}}
-{{--    <x-slot name="title">--}}
-{{--        Delete Account--}}
-{{--    </x-slot>--}}
-
-{{--    <x-slot name="content">--}}
-{{--        Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted.--}}
-{{--    </x-slot>--}}
-
-{{--    <x-slot name="footer">--}}
-{{--        <x-jet-secondary-button wire:click="" wire:loading.attr="disabled">--}}
-{{--            Nevermind--}}
-{{--        </x-jet-secondary-button>--}}
-
-{{--        <x-jet-danger-button class="ml-2" wire:click="" wire:loading.attr="disabled">--}}
-{{--            Delete Account--}}
-{{--        </x-jet-danger-button>--}}
-{{--    </x-slot>--}}
-{{--</x-jet-confirmation-modal>--}}
-<!-- This example requires Tailwind CSS v2.0+ -->
-<div class="fixed z-10 inset-0 overflow-y-auto">
-    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-        <!--
-          Background overlay, show/hide based on modal state.
-
-          Entering: "ease-out duration-300"
-            From: "opacity-0"
-            To: "opacity-100"
-          Leaving: "ease-in duration-200"
-            From: "opacity-100"
-            To: "opacity-0"
-        -->
-        <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-        </div>
-
-        <!-- This element is to trick the browser into centering the modal contents. -->
-        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-        <!--
-          Modal panel, show/hide based on modal state.
-
-          Entering: "ease-out duration-300"
-            From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-            To: "opacity-100 translate-y-0 sm:scale-100"
-          Leaving: "ease-in duration-200"
-            From: "opacity-100 translate-y-0 sm:scale-100"
-            To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-        -->
-        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <div class="sm:flex sm:items-start">
-                    <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                        <!-- Heroicon name: exclamation -->
-                        <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                        </svg>
-                    </div>
-                    <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
-                            Deactivate account
-                        </h3>
-                        <div class="mt-2">
-                            <p class="text-sm text-gray-500">
-                                Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+<!-- component -->
+<div class="fixed z-10 inset-0 overflow-y-auto ease-out duration-400 " xmlns:wire="http://www.w3.org/1999/xhtml">
+<div  class="flex items-center justify-center fixed left-0 bottom-0 w-full h-full">
+    <div class="bg-white justify-center overflow-hidden border-4 border-blue-500 rounded-lg w-1/2">
+        <div class="flex flex-col items-start  bg-white-medium">
+            <div class="flex items-center bg-gray-200 w-full">
+                <div class="text-gray-900 px-4 font-bold text-lg">Confirmacion del Pago</div>
+                <svg class="ml-auto fill-current text-gray-700 w-6 h-6 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"/>
+                </svg>
             </div>
-            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
-                    Deactivate
+            <hr>
+            <div class="pt-2">
+                <p class="px-4">{{$mensaje_modal}}</p>
+                <p class="px-4">{{$servicio_pagar}}</p>
+                <p class="px-4">{{$monto_pagar}}</p>
+            </div>
+            <hr>
+            <div class="ml-auto">
+                <button wire:click.prevent="cerrarModal()" class="bg-red-500 hover:bg-red-700 mr-4 mb-4 text-white font-bold py-2 px-4 rounded">
+                    Cancelar
                 </button>
-                <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
-                    Cancel
+                <button wire:click.prevent="confirmarPago()" class="bg-green-500 hover:bg-green-700 mr-4 mb-4 text-white font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                    Aceptar
                 </button>
             </div>
         </div>
     </div>
 </div>
-
+</div>

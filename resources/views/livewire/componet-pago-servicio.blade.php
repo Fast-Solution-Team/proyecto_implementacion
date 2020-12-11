@@ -24,10 +24,13 @@
                <div><span class="ml-5 error text-red-800 font-bold italic">{{ $message }}</span></div>
                @enderror
                <div class="rounded">
-                   <x-jet-button wire:click="store" class="ml-4 ml-5 mt-3 mb-5">ACEPTAR</x-jet-button>
+                   <x-jet-button wire:click.prevent="store()" class="ml-4 ml-5 mt-3 mb-5">PAGAR</x-jet-button>
                </div>
            </div>
     </div>
+    @if($abrir_modal == 'abrir')
+        @include('livewire.transacciones.confirmar_PF_modal')
+    @endif
     <div>
         @if (session()->has('ok'))
             <div class="alert alert-success">

@@ -13,7 +13,7 @@ class SaldoBilletera extends Model
     protected $fillable = [
         'SALDO_BILLETERA'
     ];
-    const CREATED_AT = false;
-    const UPDATED_AT = false;
+    const CREATED_AT = 'FEC_CRE';
+    const UPDATED_AT = 'FEC_MOD';
 }
 
