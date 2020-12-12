@@ -69,13 +69,4 @@ class User extends Authenticatable
         return $saldo;
     }
 
-    public function getNumDepositos(){
-
-        $depositos = DB::select('SELECT * FROM emoney.transacciones where ID_BILLETERA = ? and TIPO_TRANSACCION = "DP"', [ $this->id_billetera]);
-        $conteo_deposito = count($depositos);
-
-        return $conteo_deposito;
-    }
-
-
 }

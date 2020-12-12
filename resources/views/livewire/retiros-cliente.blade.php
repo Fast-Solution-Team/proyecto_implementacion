@@ -6,7 +6,7 @@
             <div class="shadow-lg bg-red-vibrant border-l-8 hover:bg-red-vibrant-dark border-red-vibrant-dark mb-2 p-2 md:w-1/4 mx-2">
                 <div class="p-4 flex flex-col">
                     <a href="#" class="no-underline text-white text-2xl">
-                        Lps 10000
+                        {{$totalRetiros}}
                     </a>
                     <a href="#" class="no-underline text-white text-lg">
                         Total
@@ -17,10 +17,10 @@
             <div class="shadow bg-info border-l-8 hover:bg-info-dark border-info-dark mb-2 p-2 md:w-1/4 mx-2">
                 <div class="p-4 flex flex-col">
                     <a href="#" class="no-underline text-white text-2xl">
-                        1
+                        {{$countRetiros}}
                     </a>
                     <a href="#" class="no-underline text-white text-lg">
-                        Retiros realizados
+                        Retiros Realizados
                     </a>
                 </div>
             </div>
