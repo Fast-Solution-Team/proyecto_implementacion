@@ -16,12 +16,13 @@ class ComponetPagoServicio extends Component
 
     protected $rules = [
         'servicio' => 'required',
-        'monto' => 'required|numeric',
+        'monto' => 'required|numeric| min: 1',
     ];
     protected $messages = [
         'servicio.required' => 'Debe Seleccionar un Servicio.',
         'monto.required' => 'Debe ingresar un monto a Pagar.',
         'monto.numeric' => 'Debe ingresar un monto en numeros.',
+        'monto.min' => 'No se aceptan numeros negativos.'
     ];
 
     public function render()
@@ -52,7 +53,7 @@ class ComponetPagoServicio extends Component
             if (Auth::user()->getSaldoAttribute() < $this->monto){
                 session()->flash('error3', 'FALLO: La Billetera no Cuenta con Suficiente Dinero para Realizar el Pago!!.');
             }
-            if($estado_billetera->billetera_asignada == 'S' && $estado_cliente->estado_cliente == 'A' && Auth::user()->getSaldoAttribute() > $this->monto){
+            if($estado_billetera->billetera_asignada == 'S' && $estado_cliente->estado_cliente == 'a' && Auth::user()->getSaldoAttribute() >= $this->monto){
                 Transaccion::insert([
                     'fecha_transaccion'=> $now->format('Y-m-d H:i:s'),
                     'id_billetera'=> Auth::user()->id_billetera,
@@ -87,7 +88,6 @@ class ComponetPagoServicio extends Component
             }
         }
     }
-
     public function cerrarModal(){
         $this->abrir_modal = '';
     }
