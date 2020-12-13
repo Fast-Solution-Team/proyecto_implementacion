@@ -55,7 +55,7 @@
                                     <div class="title-post font-medium">CAMBIO DE CONTRASEÑA</div>
                                 </div>
 
-                                <div class="summary-post text-base text-justify">Recuerda que tu nuevo pin: debe ser de 4 dígitos, solo debe contener números y no letras, no pueden ser números seguidos, ej. 1234, tampoco deben ser números repetidos, ej. 2222.
+                                <div class="summary-post text-base text-justify">Recuerda que tu nueva contrseña debe ser de unica y usar numeros y caracteres para mas seguridad. Recuerda no compartir tu contraseña con nadie mas
                                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold block rounded p-2 text-md " ><a href="{{route('profile.show')}}">IR</a></button>
                                 </div>
 
