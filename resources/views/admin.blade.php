@@ -25,7 +25,7 @@
             <div class="flex justify-between">
                 <div class="p-1 mx-3 inline-flex items-center">
                     <i class="fas fa-bars pr-2 text-white" onclick="sidebarToggle()"></i>
-                    <a href="{{route('/admin')}}" class="text-white p-2">Inicio</a>
+                    <a href="{{route('dashboard')}}" class="text-white hover:text-yellow-400 hover:font-medium p-2">Inicio</a>
                 </div>
                 <div class="p-1 flex flex-row items-center">
 

@@ -12,9 +12,15 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link class="hover:border-red-500 " href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-nav-link class="hover:border-red-500 hover:text-white " href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         <label class="text-gray-500 font-bold text-3xl border-blue-700">Emoney</label>
                     </x-jet-nav-link>
+                    @can('depositos')
+                        <x-jet-nav-link class="hover:border-red-500 hover:text-white" href="{{ route('/admin') }}" :active="request()->routeIs('dashboard')">
+                            <label class="text-gray-500 font-medium text-2xl border-blue-700">Administrar</label>
+                        </x-jet-nav-link>
+                    @endcan
+
                 </div>
             </div>
 
@@ -42,7 +48,13 @@
                     </x-slot>
                     <x-slot name="content">
                         <!-- Account Management -->
-                        <div class="block px-4 py-2 text-xs text-white font-bold uppercase">
+                        <div class="block px-4 py-2 text-xs bg-blue-200 text-gray-800 border-b-2 border-blue-800 font-bold uppercase">
+                            {{ __('Billetera') }}
+                        </div>
+                        <div class="block px-4 py-2 text-xs text-gray-600 uppercase">
+                            {{Auth::user()->id_billetera}}
+                        </div>
+                        <div class="block px-4 py-2 text-xs bg-blue-200 text-gray-800 border-b-2 border-blue-800 font-bold uppercase">
                             {{ __('Cuenta') }}
                         </div>
 
