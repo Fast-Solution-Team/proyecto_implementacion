@@ -38,6 +38,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/retiros',function (){
     return view('livewire.admin.retiros');
 })->name('/retiros');
 
+//ruta para realizar los retiros, con el boton efectuar retiro
+Route::middleware(['auth:sanctum', 'verified'])->get('/servicioretiros',function (){
+    return view('livewire.admin.servicio_retiro_index');
+})->name('/servicioretiros');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/depositos',function (){
     return view('livewire.admin.depositos');
