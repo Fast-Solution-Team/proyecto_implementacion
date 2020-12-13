@@ -22,6 +22,8 @@
 <div align="center" style="align-content: center">
 
     <h4> RETIROS </h4>
+=======
+    <h3> RETIROS </h3>
 </div>
 
     <form action="#" class="credit-card-div">
