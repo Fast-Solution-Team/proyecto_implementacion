@@ -15,7 +15,7 @@
                 }
             </style>
 
-            <section class="bg-blue-200 blog text-gray-700 body-font">
+            <section class="bg-blue-100 blog text-gray-700 body-font">
                 <div class="container px-5 py-24 mx-auto">
                     <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
                         <h1 class="md:text-3xl text-2xl font-bold title-font mb-2 text-blue-500 uppercase" > Emoney</h1>
@@ -52,11 +52,11 @@
                                     <div class="category-badge flex-1  h-4 w-4 m rounded-full m-1 bg-yellow-100">
                                         <div class="h-2 w-2 rounded-full m-1 bg-yellow-500 " ></div>
                                     </div>
-                                    <div class="title-post font-medium">CAMBIO DE PIN</div>
+                                    <div class="title-post font-medium">CAMBIO DE CONTRASEÑA</div>
                                 </div>
 
                                 <div class="summary-post text-base text-justify">Recuerda que tu nuevo pin: debe ser de 4 dígitos, solo debe contener números y no letras, no pueden ser números seguidos, ej. 1234, tampoco deben ser números repetidos, ej. 2222.
-                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold block rounded p-2 text-md " >IR</button>
+                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold block rounded p-2 text-md " ><a href="{{route('profile.show')}}">IR</a></button>
                                 </div>
 
                             </div>
