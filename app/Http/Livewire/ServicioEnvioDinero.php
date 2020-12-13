@@ -33,11 +33,12 @@ class ServicioEnvioDinero extends Component
 
         $validate = $this->validate([
             'billetera' => 'required',
-            'monto' => 'required'
+            'monto' => 'required|numeric|min: 1'
 
         ], $messages = [
             'billtera.required' => 'La billetera es requerida para hacer el envio',
-            'monto.required' => 'El monto es requerido para enviar el dinero'
+            'monto.required' => 'El monto es requerido para enviar el dinero',
+            'monto.min' => 'No se aceptan numeros negativos.'
         ]);
 
         $comprobarbilletera = Billetera::where('ID_BILLETERA', $this->billetera)->count();
@@ -92,7 +93,7 @@ class ServicioEnvioDinero extends Component
         $transaccion->TIPO_TRANSACCION = 'ED';
         $transaccion->FEC_CRE = $date;
         $transaccion->ESTADO_TRANSACCION = 'E';
-        $transaccion->USU_CRE = Auth::user()->id_billetera;
+        $transaccion->USU_CRE = '@admin';
 
         $transaccion->save();
 
@@ -104,7 +105,7 @@ class ServicioEnvioDinero extends Component
         $movimiento->MONTO_TRANSACCION = $this->monto;
         $movimiento->SALDO_ANTERIOR = Auth::user()->getSaldoAttribute();
         $movimiento->SALDO_POSTERIOR = $saldo_posterior ;
-        $movimiento->USU_CRE = Auth::user()->id_billetera;
+        $movimiento->USU_CRE = '@admin';
         $movimiento->FEC_CRE = $date;
 
         $movimiento->save();

@@ -17,10 +17,10 @@
             </div>
             <hr>
             <div class="ml-auto">
-                <button wire:click.prevent="cerrarModal()" class="bg-red-500 hover:bg-red-700 mr-4 mb-4 text-white font-bold py-2 px-4 rounded">
+                <button wire:click="cerrarModal" class="bg-red-500 hover:bg-red-700 mr-4 mb-4 text-white font-bold py-2 px-4 rounded">
                     Cancelar
                 </button>
-                <button wire:click.prevent="confirmarPago()" class="bg-green-500 hover:bg-green-700 mr-4 mb-4 text-white font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                <button wire:click="confirmarPago" class="bg-green-500 hover:bg-green-700 mr-4 mb-4 text-white font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                     Aceptar
                 </button>
             </div>
