@@ -82,7 +82,7 @@ class CreateNewUser implements CreatesNewUsers
                 });
             });
         }else{
-            abort(500);
+            abort(response('No hay billeteras disponibles', 401) );
         }
         //insertar manualmente la billetera en users
     }

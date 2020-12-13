@@ -32,7 +32,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 // RUTA PARA LA PAGINA DEL ADMINISTRADOR
-Route::middleware(['auth:sanctum', 'verified'])->get('/admin', function () {
+Route::middleware(['auth:sanctum', 'verified', 'role:super_admin'])->get('/admin', function () {
     return view('admin');
 })->name('/admin');
 
