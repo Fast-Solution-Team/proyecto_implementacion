@@ -21,9 +21,11 @@
 
 <div align="center" style="align-content: center">
 
+<<<<<<< HEAD
     <h4> RETIROS </h4>
 =======
     <h3> RETIROS </h3>
+>>>>>>> master
 </div>
 
     <form action="#" class="credit-card-div">
