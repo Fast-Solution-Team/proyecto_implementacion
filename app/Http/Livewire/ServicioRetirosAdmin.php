@@ -12,7 +12,6 @@ class ServicioRetirosAdmin extends Component
     {
         return view('livewire.servicio-retiros-admin');
     }
-    
 
 
 
