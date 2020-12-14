@@ -100,7 +100,7 @@
                         </tbody>
                     </table>
                 </div>
-
+                {{$pagos->links('pagination-links')}}
             </div>
             <!-- /card -->
 

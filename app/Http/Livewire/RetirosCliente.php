@@ -36,7 +36,7 @@ class RetirosCliente extends Component
 
             ->orwhere('movimientos_billeteras.SALDO_POSTERIOR', 'like', '%'.$this->search.'%')
             ->where('transacciones.TIPO_TRANSACCION', '=','RT')
-            ->where('users.id_billetera', '=', Auth::user()->id_billetera)->paginate(1);
+            ->where('users.id_billetera', '=', Auth::user()->id_billetera)->paginate(5);
 
         // consulta sin los where
         $totalretiros = DB::table('movimientos_billeteras')

@@ -92,6 +92,7 @@
                         </tbody>
                     </table>
                 </div>
+                {{$retiros->links('pagination-links')}}
             </div>
             <!-- /card -->
 

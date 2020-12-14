@@ -4,11 +4,13 @@ namespace App\Http\Livewire;
 
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class DepositosAdmin extends Component
 {
     public $search;
     private $depositos;
+    use WithPagination;
     public function render()
     {
         $this->depositos = DB::table('movimientos_billeteras')
@@ -49,7 +51,7 @@ class DepositosAdmin extends Component
 
             ->orwhere('movimientos_billeteras.SALDO_POSTERIOR', 'like', '%'.$this->search.'%')
             ->where('transacciones.TIPO_TRANSACCION', '=','DP')
-            ->get();
+            ->paginate(5);
 
 
 

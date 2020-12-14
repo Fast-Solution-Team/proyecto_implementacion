@@ -5,12 +5,13 @@ namespace App\Http\Livewire;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class DineroRecibidoCliente extends Component
 {
     public $search;
     private $recibidoscliente;
-
+    use WithPagination;
     public function render()
     {
         $this->recibidoscliente = DB::table('movimientos_billeteras')
@@ -55,7 +56,7 @@ class DineroRecibidoCliente extends Component
 
             ->orwhere('movimientos_billeteras.SALDO_POSTERIOR', 'like', '%'.$this->search.'%')
             ->where('transacciones.TIPO_TRANSACCION', '=','ED')
-            ->where('transacciones.ID_BILLETERA_DESTINO', '=', Auth::user()->id_billetera)->get();
+            ->where('transacciones.ID_BILLETERA_DESTINO', '=', Auth::user()->id_billetera)->paginate(5);
 
 
 

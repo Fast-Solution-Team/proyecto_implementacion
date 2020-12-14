@@ -94,7 +94,7 @@
                         </tbody>
                     </table>
                 </div>
-
+                {{$depositos->links('pagination-links')}}
             </div>
             <!-- /card -->
 

@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-    <div class="flex items-end my-2">
+    <div class="flex items-end my-2" xmlns:wire="http://www.w3.org/1999/xhtml">
 
         @if ( ! $paginator->onFirstPage())
             {{-- First Page Link --}}
@@ -36,9 +36,9 @@
 
                 <!--  Show active page two pages before and after it.  -->
                     @if ($page == $paginator->currentPage())
-                        <span class="mx-1 px-4 py-2 border-2 border-blue-400 bg-blue-400 text-white font-bold text-center hover:bg-blue-800 hover:border-blue-800 rounded-lg  cursor-pointer">{{ $page }}</span>
+                        <span class="mx-1 px-4 py-2 border-2 border-blue-400 bg-blue-400 text-white font-bold text-center hover:bg-gray-800 hover:border-gray-800 rounded-lg  cursor-pointer">{{ $page }}</span>
                     @elseif ($page === $paginator->currentPage() + 1 || $page === $paginator->currentPage() + 2 || $page === $paginator->currentPage() - 1 || $page === $paginator->currentPage() - 2)
-                        <a class="mx-1 px-4 py-2 border-2 border-blue-900 text-blue-900 font-bold text-center hover:text-blue-400 rounded-lg  cursor-pointer" wire:click="gotoPage({{$page}})">{{ $page }}</a>
+                        <a class="mx-1 px-4 py-2 border-2 border-gray-800 text-gray-800 font-bold text-center hover:text-blue-400 rounded-lg  cursor-pointer" wire:click="gotoPage({{$page}})">{{ $page }}</a>
                     @endif
 
                 <!--  Use three dots when current page is away from end.  -->
@@ -56,14 +56,14 @@
         {{-- Next Page Link --}}
         @if ($paginator->hasMorePages())
             @if($paginator->lastPage() - $paginator->currentPage() >= 2)
-                <a class="mx-1 px-4 py-2 bg-blue-900 border-2 border-blue-900 text-white font-bold text-center hover:bg-blue-400 hover:border-blue-400 rounded-lg  cursor-pointer"
-                   wire:click="nextPage"
+                <a class="mx-1 px-4 py-2 bg-gray-800 border-2 border-gray-800 text-white font-bold text-center hover:bg-blue-400 hover:border-blue-400 rounded-lg  cursor-pointer"
+                   wire:click=nextPage"
                    rel="next">
                     >
                 </a>
             @endif
             <a
-                class="mx-1 px-4 py-2 bg-blue-900 border-2 border-blue-900 text-white font-bold text-center hover:bg-blue-400 hover:border-blue-400 rounded-lg  cursor-pointer"
+                class="mx-1 px-4 py-2 bg-gray-800 border-2 border-gray-800 text-white font-bold text-center hover:bg-blue-400 hover:border-blue-400 rounded-lg  cursor-pointer"
                 wire:click="gotoPage({{ $paginator->lastPage() }})"
             >
                 >>
