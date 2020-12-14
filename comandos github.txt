@@ -21,3 +21,4 @@ git fetch >> git va actualizar localmente todos los cambios que se sucedieron en
 git push --set-upstream origin nombre-rama ->> hace push de una rama del repositorio local al repositorio en github
 
 ax2.1
+///////
