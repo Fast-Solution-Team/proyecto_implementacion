@@ -58,6 +58,12 @@
     @if($openConfirmarEnvio == 'abrir')
         @include('livewire.transacciones.moddal_confirmar_envio')
     @endif
+
+    @if (session()->has('ok'))
+        <div class="alert alert-success">
+            @include('livewire.transacciones.ok_notificacion_envio')
+        </div>
+    @endif
 </div>
 </div>
 
