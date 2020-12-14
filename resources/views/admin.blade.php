@@ -96,7 +96,7 @@
 
                     <li class="w-full h-full py-3 px-2 border-b border-light-border">
                         <a href="{{route('efectuar.deposito')}}"
-                           class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                           class="font-medium font-hairline hover:font-normal text-sm text-nav-item no-underline">
                             <i class="fas fa-grip-horizontal float-left mx-2"></i>
                             Efectuar Deposito
                             <span><i class="fa fa-angle-right float-right"></i></span>
@@ -105,7 +105,7 @@
 
                     <li class="w-full h-full py-3 px-2 border-b border-light-border">
                         <a href="{{route('/servicioretiros')}}"
-                           class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                           class="font-medium font-hairline hover:font-normal text-sm text-nav-item no-underline">
                             <i class="fas fa-grip-horizontal float-left mx-2"></i>
                             Efectuar Retiros
                             <span><i class="fa fa-angle-right float-right"></i></span>
