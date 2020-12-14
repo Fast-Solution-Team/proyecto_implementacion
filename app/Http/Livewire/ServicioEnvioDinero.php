@@ -36,9 +36,10 @@ class ServicioEnvioDinero extends Component
             'monto' => 'required|numeric|min: 1'
 
         ], $messages = [
-            'billtera.required' => 'La billetera es requerida para hacer el envio',
+            'billetera.required' => 'La billetera es requerida para hacer el envio',
             'monto.required' => 'El monto es requerido para enviar el dinero',
-            'monto.min' => 'No se aceptan numeros negativos.'
+            'monto.min' => 'No se aceptan numeros negativos.',
+            'monto.numeric' => 'Debe ingresar un monto en numeros.'
         ]);
 
         $comprobarbilletera = Billetera::where('ID_BILLETERA', $this->billetera)->count();
@@ -122,8 +123,10 @@ class ServicioEnvioDinero extends Component
         // actualizacion del campo saldo billetera por el saldo posterior
         SaldoBilletera::where('ID_BILLETERA', $this->billetera)->update(['SALDO_BILLETERA' => $saldoPosteriorBilleteraDestino]);
 
+        session()->flash('ok', 'Transaccion Efectuada Exitosamente.');
        // retorna para recargar la pagina y actualiza el saldo
         return redirect('servicioenviodinero');
+
     }
 
     public function cerrarModal(){
@@ -132,4 +135,5 @@ class ServicioEnvioDinero extends Component
 
         $this->openErrorBilletera = '';
     }
+
 }

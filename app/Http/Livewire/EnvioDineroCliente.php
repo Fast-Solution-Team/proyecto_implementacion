@@ -6,11 +6,14 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class EnvioDineroCliente extends Component
 {
     public $search;
     private $envioscliente;
+    use WithPagination;
+
 
     public function render()
     {
@@ -56,7 +59,7 @@ class EnvioDineroCliente extends Component
 
             ->orwhere('movimientos_billeteras.SALDO_POSTERIOR', 'like', '%'.$this->search.'%')
             ->where('transacciones.TIPO_TRANSACCION', '=','ED')
-            ->where('transacciones.id_billetera', '=', Auth::user()->id_billetera)->get();
+            ->where('transacciones.id_billetera', '=', Auth::user()->id_billetera)->paginate(5);
 
         // consulta sin los where
         $totalenvios = DB::table('movimientos_billeteras')
