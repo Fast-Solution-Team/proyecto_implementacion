@@ -50,7 +50,7 @@
                     <x-jet-dropdown-link href="{{ route('logout') }}"
                                          onclick="event.preventDefault();
                                                             this.closest('form').submit();">
-                        {{ __('Salir') }}
+                        {{ __('SALIR') }}
                     </x-jet-dropdown-link>
                 </form>
 
@@ -90,14 +90,18 @@
                         </a>
                     </li>
 
-                    <div align="center">
-                        <p>Transacciones</p>
-                    </div>
+                    <li class="w-full h-full py-4 px-4 border-b border-300-border hover:bg-white-medium">
+                        <a href="#" class=" font-normal font-hairline text-sm text-nav-item no-underline">
+
+                           TRANSACCIONES
+
+                        </a>
+                    </li>
 
                     <li class="w-full h-full py-3 px-2 border-b border-light-border">
                         <a href="{{route('efectuar.deposito')}}"
                            class="font-medium font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                            <i class="fas fa-grip-horizontal float-left mx-2"></i>
+                            <i class="fas fa-user-check float-left mx-2"></i>
                             Efectuar Deposito
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>
@@ -106,7 +110,7 @@
                     <li class="w-full h-full py-3 px-2 border-b border-light-border">
                         <a href="{{route('/servicioretiros')}}"
                            class="font-medium font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                            <i class="fas fa-grip-horizontal float-left mx-2"></i>
+                            <i class="fas fa-user-check float-left mx-2"></i>
                             Efectuar Retiros
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>
