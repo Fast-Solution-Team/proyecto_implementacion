@@ -25,7 +25,7 @@
             <div class="flex justify-between">
                 <div class="p-1 mx-3 inline-flex items-center">
                     <i class="fas fa-bars pr-2 text-white" onclick="sidebarToggle()"></i>
-                    <a href="{{route('/admin')}}" class="text-white p-2">Inicio</a>
+                    <a href="{{route('dashboard')}}" class="text-white hover:text-yellow-400 hover:font-medium p-2">Inicio</a>
                 </div>
                 <div class="p-1 flex flex-row items-center">
 
@@ -92,7 +92,14 @@
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>
                     </li>
-
+                    <li class="w-full h-full py-3 px-2 border-b border-light-border">
+                        <a href="{{route('efectuar.deposito')}}"
+                           class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                            <i class="fas fa-grip-horizontal float-left mx-2"></i>
+                            Efectuar Deposito
+                            <span><i class="fa fa-angle-right float-right"></i></span>
+                        </a>
+                    </li>
                 </ul>
 
             </aside>
@@ -125,7 +132,11 @@
     </div>
 
 </div>
+@stack('modals')
+@livewireScripts
  </body>
+ 
+
 <script src="{{asset('js/main.js')}} "></script>
 
 
