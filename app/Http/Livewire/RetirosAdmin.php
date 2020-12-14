@@ -5,11 +5,13 @@ namespace App\Http\Livewire;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class RetirosAdmin extends Component
 {
     public $search;
     private $retiros;
+    use WithPagination;
 
 
     public function render()
@@ -53,7 +55,7 @@ class RetirosAdmin extends Component
 
             ->orwhere('movimientos_billeteras.SALDO_POSTERIOR', 'like', '%'.$this->search.'%')
             ->where('transacciones.TIPO_TRANSACCION', '=','RT')
-            ->get();
+            ->paginate(5);
 
         // consulta sin los where
         $totalretirosadmin = DB::table('movimientos_billeteras')

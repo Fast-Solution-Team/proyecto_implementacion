@@ -4,11 +4,13 @@ namespace App\Http\Livewire;
 
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class PagoAdmin extends Component
 {
     public $search;
     private $pagos;
+    use WithPagination;
     public function render()
     {
         $this->pagos = DB::table('movimientos_billeteras')
@@ -52,7 +54,7 @@ class PagoAdmin extends Component
             ->where('transacciones.TIPO_TRANSACCION', '=','PS')
 
             ->orwhere('movimientos_billeteras.SALDO_POSTERIOR', 'like', '%'.$this->search.'%')
-            ->where('transacciones.TIPO_TRANSACCION', '=','PS')->get();
+            ->where('transacciones.TIPO_TRANSACCION', '=','PS')->paginate(5);
 
         // consulta sin los where
         $totalpagosadmin = DB::table('movimientos_billeteras')

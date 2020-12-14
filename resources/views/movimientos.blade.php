@@ -19,9 +19,9 @@
             @livewire('navigation-dropdown')
 
             <!-- Page Content -->
-            <div class="bg-gray-200">
+            <div class=" bg-white">
                 <div class="flex flex-col float-left overflow-hidden">
-                    <div class="w-64 h-screen bg-white border-r-4 border-blue-700">
+                    <div class=" w-64 h-screen bg-white border-r-4  border-blue-700 ">
                         <div class="flex items-center justify-center mt-10">
                             <label class="font-bold text-gray-800 text-3xl border-blue-700 border-b-4">MOVIMIENTOS</label>
                         </div>

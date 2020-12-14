@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="./dist/styles.css">
     <link rel="stylesheet" href="./dist/all.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link href="https://unpkg.com/tailwindcss@1.6.2/dist/tailwind.min.css" rel="stylesheet">
+
     <title>Administrador</title>
 </head>
 
@@ -25,20 +29,13 @@
             <div class="flex justify-between">
                 <div class="p-1 mx-3 inline-flex items-center">
                     <i class="fas fa-bars pr-2 text-white" onclick="sidebarToggle()"></i>
-                    <a href="{{route('/admin')}}" class="text-white p-2">Inicio</a>
+                    <a href="{{route('dashboard')}}" class="text-white hover:text-yellow-400 hover:font-medium p-2">Inicio</a>
                 </div>
                 <div class="p-1 flex flex-row items-center">
 
 
                      <a href="#" onclick="profileToggle()" class="text-white p-2 no-underline hidden md:block lg:block">{{Auth::user()->name}} {{Auth::user()->lastname}}</a>
-                    <div id="ProfileDropDown" class="rounded hidden shadow-md bg-white absolute pin-t mt-12 mr-1 pin-r">
-                        <ul class="list-reset">
-                            <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">My account</a></li>
-                            <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">Notifications</a></li>
-                            <li><hr class="border-t mx-2 border-grey-ligght"></li>
-                            <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">Logout</a></li>
-                        </ul>
-                    </div>
+
                 </div>
             </div>
         </header>
@@ -69,16 +66,16 @@
 
                     <li class="w-full h-full py-3 px-2 border-b border-light-border">
                         <a href="{{route('/retiros')}}"
-                           class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                            <i class="fab fa-wpforms float-left mx-2"></i>
+                           class="font-medium font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                            <i class="fas fa-hand-holding-usd float-left mx-2"></i>
                             Retiros
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>
                     </li>
                     <li class="w-full h-full py-3 px-2 border-b border-light-border">
                         <a href="{{route('/depositos')}}"
-                           class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                            <i class="fas fa-grip-horizontal float-left mx-2"></i>
+                           class="font-medium font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                            <i class="fas fa-credit-card float-left mx-2"></i>
                             Depositos
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>
@@ -86,22 +83,47 @@
 
                     <li class="w-full h-full py-3 px-2 border-b border-light-border">
                         <a href="{{route('/pago')}}"
-                           class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                            <i class="fas fa-grip-horizontal float-left mx-2"></i>
+                           class="font-medium font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                            <i class="fas fa-shopping-cart float-left mx-2"></i>
                             Pago de Servicios
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>
                     </li>
                     <li class="w-full h-full py-3 px-2 border-b border-light-border">
                         <a href="{{route('/envios')}}"
-                           class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                            <i class="fas fa-table float-left mx-2"></i>
+                           class="font-medium font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                            <i class="fas fa-credit-card float-left mx-2"></i>
                             Envio de dinero
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>
                     </li>
 
+                    <div align="center">
+                        <p>Transacciones</p>
+                    </div>
+
+                    <li class="w-full h-full py-3 px-2 border-b border-light-border">
+                        <a href="{{route('efectuar.deposito')}}"
+                           class="font-medium font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                            <i class="fas fa-grip-horizontal float-left mx-2"></i>
+                            Efectuar Deposito
+                            <span><i class="fa fa-angle-right float-right"></i></span>
+                        </a>
+                    </li>
+
+                    <li class="w-full h-full py-3 px-2 border-b border-light-border">
+                        <a href="{{route('/servicioretiros')}}"
+                           class="font-medium font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                            <i class="fas fa-grip-horizontal float-left mx-2"></i>
+                            Efectuar Retiros
+                            <span><i class="fa fa-angle-right float-right"></i></span>
+                        </a>
+                    </li>
+
+
+
                 </ul>
+
 
             </aside>
             <!--/Sidebar-->
@@ -125,7 +147,7 @@
             <!--/Main-->
         </div>
         <!--Footer-->
-        <footer class="bg-grey-darkest text-white p-2">
+        <footer class="bg-gray-800 text-white p-2">
             <div class="flex flex-1 mx-auto">&copy; My Design</div>
         </footer>
         <!--/footer-->
@@ -133,7 +155,11 @@
     </div>
 
 </div>
+@stack('modals')
+@livewireScripts
  </body>
+
+
 <script src="{{asset('js/main.js')}} "></script>
 
 

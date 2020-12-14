@@ -5,11 +5,13 @@ namespace App\Http\Livewire;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class EnvioAdmin extends Component
 {
     public $search ,$name,$fecha_nac,$identidad,$sexo,$id_billetera,$email,$direccion;
     private $envios;
+    use WithPagination;
     public function render()
     {
         $this->envios = DB::table('movimientos_billeteras')
@@ -50,7 +52,7 @@ class EnvioAdmin extends Component
             ->where('transacciones.TIPO_TRANSACCION', '=','ED')
 
             ->orwhere('movimientos_billeteras.SALDO_POSTERIOR', 'like', '%'.$this->search.'%')
-            ->where('transacciones.TIPO_TRANSACCION', '=','ED')->get();
+            ->where('transacciones.TIPO_TRANSACCION', '=','ED')->paginate(5);
 
         // consulta sin los where
         $totalenviosadmin = DB::table('movimientos_billeteras')

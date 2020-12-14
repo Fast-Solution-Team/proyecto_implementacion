@@ -12,34 +12,35 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
-class ServicioEnvioDinero extends Component
+class EfectuarDepositoAdmin extends Component
 {
+
     public $billetera;
     public $monto;
     public $openErrorBilletera;
     public $errorEnvio;
     public $openConfirmarEnvio;
     public $datos_usuario;
+    public $datos_monto;
 
 
     public function render()
     {
-        return view('livewire.servicio-envio-dinero');
+        return view('livewire.efectuar-deposito-admin');
     }
 
+    protected $messages = [
+        'billetera.required' => 'Ingrese una billetera',
+        'monto.required' => 'Ingrese un monto',
+        'monto.min' => 'No se aceptan numeros negativos.'
+    ];
+
+ 
     public function enviardinero(){
-
-
 
         $validate = $this->validate([
             'billetera' => 'required',
             'monto' => 'required|numeric|min: 1'
-
-        ], $messages = [
-            'billetera.required' => 'La billetera es requerida para hacer el envio',
-            'monto.required' => 'El monto es requerido para enviar el dinero',
-            'monto.min' => 'No se aceptan numeros negativos.',
-            'monto.numeric' => 'Debe ingresar un monto en numeros.'
         ]);
 
         $comprobarbilletera = Billetera::where('ID_BILLETERA', $this->billetera)->count();
@@ -48,30 +49,15 @@ class ServicioEnvioDinero extends Component
             $comprobarBilleteraUsuario = Billetera::where('ID_BILLETERA', $this->billetera)->pluck('BILLETERA_ASIGNADA')->first();
 
             if ($comprobarBilleteraUsuario == 'S'){
+                   
+                $cliente = User::where('id_billetera', $this->billetera)->get();
 
+                $this->datos_usuario = 'Seguro quieres depositar a: ' .$cliente[0]['name'].' '
+                .$cliente[0]['second_name'].' '.$cliente[0]['lastname'].' '.$cliente[0]['second_lastname'];
 
-                if(Auth::user()->id_billetera == $this->billetera){
+                $this->datos_monto = 'La cantidad de: L. '. $this->monto;
 
-                    $this->errorEnvio = 'No puede enviar dinero a su misma billetera';
-                    $this->openErrorBilletera = 'openErrorBilletera';
-                }else {
-
-                    $comprobarSaldo = Auth::user()->getSaldoAttribute() - $this->monto;
-                    if ($comprobarSaldo >= 0) {
-
-                        $cliente = User::where('id_billetera', $this->billetera)->get();
-                        $this->datos_usuario = 'Seguro que quiere enviar dinero a: ' .$cliente[0]['name'].' '
-                            .$cliente[0]['second_name'].' '.$cliente[0]['lastname'].' '.$cliente[0]['second_lastname'];
-
-                        $this->openConfirmarEnvio = 'abrir';
-
-
-                    } else {
-                        $this->errorEnvio = 'No cuenta con saldo suficiente para hacer la transaccion';
-                        $this->openErrorBilletera = 'openErrorBilletera';
-                    }
-                }
-
+                $this->openConfirmarEnvio = 'abrir';
 
             }else{
                 $this->errorEnvio = 'La billetera no esta asignada a un cliente';
@@ -84,6 +70,8 @@ class ServicioEnvioDinero extends Component
 
         }
     }
+
+
     public function  confirmarEnvio(){
         $date = Carbon::now();
 
@@ -91,7 +79,7 @@ class ServicioEnvioDinero extends Component
         $transaccion->FECHA_TRANSACCION = $date;
         $transaccion->ID_BILLETERA = Auth::user()->id_billetera;
         $transaccion->ID_BILLETERA_DESTINO = $this->billetera;
-        $transaccion->TIPO_TRANSACCION = 'ED';
+        $transaccion->TIPO_TRANSACCION = 'DP';
         $transaccion->FEC_CRE = $date;
         $transaccion->ESTADO_TRANSACCION = 'E';
         $transaccion->USU_CRE = '@admin';
@@ -100,7 +88,7 @@ class ServicioEnvioDinero extends Component
 
         $movimiento = new Movimiento();
 
-        $saldo_posterior =  Auth::user()->getSaldoAttribute() -$this->monto;
+        $saldo_posterior =  Auth::user()->getSaldoAttribute()+$this->monto;
         $movimiento->FECHA_MOVIMIENTO = $date;
         $movimiento->ID_TRANSACCION = $transaccion->id; // relacion entre la tabla transacciones y movimientos
         $movimiento->MONTO_TRANSACCION = $this->monto;
@@ -111,9 +99,6 @@ class ServicioEnvioDinero extends Component
 
         $movimiento->save();
 
-        // actualizacion del campo saldo
-        SaldoBilletera::where('ID_BILLETERA', Auth::user()->id_billetera)->update(['SALDO_BILLETERA' => $saldo_posterior]);
-
         // recuperar el saldo que tiene actualmente la billetera destino
         $saldoAnteriorBilleteraDestino = SaldoBilletera::where('ID_BILLETERA', $this->billetera)->pluck('SALDO_BILLETERA')->first();
 
@@ -123,10 +108,8 @@ class ServicioEnvioDinero extends Component
         // actualizacion del campo saldo billetera por el saldo posterior
         SaldoBilletera::where('ID_BILLETERA', $this->billetera)->update(['SALDO_BILLETERA' => $saldoPosteriorBilleteraDestino]);
 
-        session()->flash('ok', 'Transaccion Efectuada Exitosamente.');
        // retorna para recargar la pagina y actualiza el saldo
-        return redirect('servicioenviodinero');
-
+        return redirect('deposito_admin');
     }
 
     public function cerrarModal(){
@@ -135,5 +118,4 @@ class ServicioEnvioDinero extends Component
 
         $this->openErrorBilletera = '';
     }
-
 }

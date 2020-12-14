@@ -5,12 +5,13 @@ namespace App\Http\Livewire;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class RetirosCliente extends Component
 {
     public $search;
     private $retiroscliente;
-
+    use WithPagination;
 
     public function render()
     {
@@ -35,7 +36,7 @@ class RetirosCliente extends Component
 
             ->orwhere('movimientos_billeteras.SALDO_POSTERIOR', 'like', '%'.$this->search.'%')
             ->where('transacciones.TIPO_TRANSACCION', '=','RT')
-            ->where('users.id_billetera', '=', Auth::user()->id_billetera)->get();
+            ->where('users.id_billetera', '=', Auth::user()->id_billetera)->paginate(5);
 
         // consulta sin los where
         $totalretiros = DB::table('movimientos_billeteras')
