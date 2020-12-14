@@ -54,7 +54,7 @@
                 </div>
                 <div class="table-responsive">
                     <table class="table text-grey-darkest">
-                        <thead class="bg-grey-dark text-white text-normal">
+                        <thead class="bg-gray-800 text-white text-normal">
                         <tr>
                             <th scope="col">Id billetera</th>
                             <th scope="col">Nombre</th>

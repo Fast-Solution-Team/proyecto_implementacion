@@ -20,7 +20,11 @@
                         <div class="md:w-3/4">
                             <input wire:model="billetera" class="bg-grey-200 appearance-none border-1 border-grey-200 rounded w-full py-2 px-4 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-purple-light"
                                    id="inline-full-name" type="text"  placeholder="1002020102800293">
+                            @error('billetera')
+                            <div><span class="ml-5 error text-red-800 font-bold italic">{{ $message }}</span></div>
+                            @enderror
                         </div>
+
                     </div>
                     <div class="md:flex md:items-center mb-6">
                         <div class="md:w-1/4">
@@ -33,7 +37,11 @@
                             <input wire:model="monto" class="bg-grey-200 appearance-none border-1 border-grey-200 rounded w-full py-2 px-4 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-purple-light"
                                    id="inline-username" type="text"
                                    placeholder="10000">
+                            @error('monto')
+                            <div><span class="ml-5 error text-red-800 font-bold italic">{{ $message }}</span></div>
+                            @enderror
                         </div>
+
                     </div>
 
                     <div class="md:flex md:items-center">

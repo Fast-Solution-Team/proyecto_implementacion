@@ -36,9 +36,10 @@ class ServicioEnvioDinero extends Component
             'monto' => 'required|numeric|min: 1'
 
         ], $messages = [
-            'billtera.required' => 'La billetera es requerida para hacer el envio',
+            'billetera.required' => 'La billetera es requerida para hacer el envio',
             'monto.required' => 'El monto es requerido para enviar el dinero',
-            'monto.min' => 'No se aceptan numeros negativos.'
+            'monto.min' => 'No se aceptan numeros negativos.',
+            'monto.numeric' => 'Debe ingresar un monto en numeros.'
         ]);
 
         $comprobarbilletera = Billetera::where('ID_BILLETERA', $this->billetera)->count();

@@ -3,13 +3,8 @@
 
         @if ( ! $paginator->onFirstPage())
             {{-- First Page Link --}}
-            <a
-                class="mx-1 px-4 py-2 bg-blue-900 border-2 border-blue-900 text-white font-bold text-center hover:bg-blue-400 hover:border-blue-400 rounded-lg  cursor-pointer"
-                wire:click="gotoPage(1)"
-            >
-                <<
-            </a>
-            @if($paginator->currentPage() > 2)
+
+            @if($paginator->currentPage() > 1)
                 {{-- Previous Page Link --}}
                 <a
                     class="mx-1 px-4 py-2 bg-blue-900 border-2 border-blue-900 text-white font-bold text-center hover:bg-blue-400 hover:border-blue-400 rounded-lg  cursor-pointer"
@@ -55,19 +50,14 @@
 
         {{-- Next Page Link --}}
         @if ($paginator->hasMorePages())
-            @if($paginator->lastPage() - $paginator->currentPage() >= 2)
+            @if($paginator->lastPage() - $paginator->currentPage() >= 1)
                 <a class="mx-1 px-4 py-2 bg-gray-800 border-2 border-gray-800 text-white font-bold text-center hover:bg-blue-400 hover:border-blue-400 rounded-lg  cursor-pointer"
-                   wire:click=nextPage"
+                   wire:click=nextPage()"
                    rel="next">
                     >
                 </a>
             @endif
-            <a
-                class="mx-1 px-4 py-2 bg-gray-800 border-2 border-gray-800 text-white font-bold text-center hover:bg-blue-400 hover:border-blue-400 rounded-lg  cursor-pointer"
-                wire:click="gotoPage({{ $paginator->lastPage() }})"
-            >
-                >>
-            </a>
+
         @endif
     </div>
 @endif

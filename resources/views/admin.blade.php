@@ -31,14 +31,7 @@
 
 
                      <a href="#" onclick="profileToggle()" class="text-white p-2 no-underline hidden md:block lg:block">{{Auth::user()->name}} {{Auth::user()->lastname}}</a>
-                    <div id="ProfileDropDown" class="rounded hidden shadow-md bg-white absolute pin-t mt-12 mr-1 pin-r">
-                        <ul class="list-reset">
-                            <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">My account</a></li>
-                            <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">Notifications</a></li>
-                            <li><hr class="border-t mx-2 border-grey-ligght"></li>
-                            <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">Logout</a></li>
-                        </ul>
-                    </div>
+
                 </div>
             </div>
         </header>
@@ -61,16 +54,16 @@
 
                     <li class="w-full h-full py-3 px-2 border-b border-light-border">
                         <a href="{{route('/retiros')}}"
-                           class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                            <i class="fab fa-wpforms float-left mx-2"></i>
+                           class="font-medium font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                            <i class="fas fa-hand-holding-usd float-left mx-2"></i>
                             Retiros
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>
                     </li>
                     <li class="w-full h-full py-3 px-2 border-b border-light-border">
                         <a href="{{route('/depositos')}}"
-                           class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                            <i class="fas fa-grip-horizontal float-left mx-2"></i>
+                           class="font-medium font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                            <i class="fas fa-credit-card float-left mx-2"></i>
                             Depositos
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>
@@ -78,16 +71,16 @@
 
                     <li class="w-full h-full py-3 px-2 border-b border-light-border">
                         <a href="{{route('/pago')}}"
-                           class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                            <i class="fas fa-grip-horizontal float-left mx-2"></i>
+                           class="font-medium font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                            <i class="fas fa-shopping-cart float-left mx-2"></i>
                             Pago de Servicios
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>
                     </li>
                     <li class="w-full h-full py-3 px-2 border-b border-light-border">
                         <a href="{{route('/envios')}}"
-                           class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                            <i class="fas fa-table float-left mx-2"></i>
+                           class="font-medium font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                            <i class="fas fa-credit-card float-left mx-2"></i>
                             Envio de dinero
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>
@@ -117,7 +110,7 @@
             <!--/Main-->
         </div>
         <!--Footer-->
-        <footer class="bg-grey-darkest text-white p-2">
+        <footer class="bg-gray-800 text-white p-2">
             <div class="flex flex-1 mx-auto">&copy; My Design</div>
         </footer>
         <!--/footer-->
