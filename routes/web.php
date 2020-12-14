@@ -36,6 +36,12 @@ Route::middleware(['auth:sanctum', 'verified', 'role:super_admin'])->get('/admin
     return view('admin');
 })->name('/admin');
 
+
+// RUTA PARA VER LA VISTA DE LA TABLA DE USUARIOS DEL ADMINISTRADOR
+Route::middleware(['auth:sanctum', 'verified'])->get('/admin/usuarios',function (){
+    return view('livewire.admin.usuarios');
+})->name('/usuarios');
+
 // RUTA PARA VER LA VISTA DE LA TABLA DE RETIROS DEL ADMINISTRADOR
 Route::middleware(['auth:sanctum', 'verified'])->get('/retiros',function (){
     return view('livewire.admin.retiros');
