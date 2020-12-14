@@ -85,6 +85,7 @@ class ComponetPagoServicio extends Component
                     ]);
                 $this->abrir_modal = '';
                 session()->flash('ok', 'Transaccion Efectuada Exitosamente.');
+                return redirect('/tr/ps');
             }
         }
     }
