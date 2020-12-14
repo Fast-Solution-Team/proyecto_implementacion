@@ -29,12 +29,13 @@ class ServicioRetirosAdmin extends Component
 
 
         $validate = $this->validate([
-            'billetera' => 'required',
-            'monto' => 'required'
+            'billetera' => 'required|numeric',
+            'monto' => 'required|numeric|min:1'
 
         ], $messages = [
             'billetera.required' => 'La billetera es requerida para hacer el retiro',
-            'monto.required' => 'El monto es requerido para retirar el dinero'
+            'monto.required' => 'El monto es requerido para retirar el dinero',
+            'monto.min' => 'no se aceptan numeros negativos'
         ]);
 
         $comprobarbilletera = Billetera::where('ID_BILLETERA', $this->billetera)->count();
