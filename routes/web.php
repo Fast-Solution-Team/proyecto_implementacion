@@ -91,6 +91,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/servicioenviodinero',func
     return view('livewire.transacciones.servicio_envio_dinero');
 })->name('/servicioenviodinero');
 
+//ruta para realizar los retiros, con el boton efectuar retiro
+Route::middleware(['auth:sanctum', 'verified'])->get('/servicioretiros',function (){
+    return view('livewire.admin.servicio_retiros_admin');
+})->name('/servicioretiros');
+
+
+
+
 
 // RUTA PARA EFECTUAR DEPOSITOS
 Route::middleware(['auth:sanctum', 'verified', 'role:super_admin'])->get('/deposito_admin', function () {

@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="./dist/styles.css">
     <link rel="stylesheet" href="./dist/all.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link href="https://unpkg.com/tailwindcss@1.6.2/dist/tailwind.min.css" rel="stylesheet">
+
     <title>Administrador</title>
 </head>
 
@@ -92,6 +96,7 @@
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>
                     </li>
+
                     <li class="w-full h-full py-3 px-2 border-b border-light-border">
                         <a href="{{route('efectuar.deposito')}}"
                            class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
@@ -100,7 +105,23 @@
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>
                     </li>
+
+
+
+                    <br>
+
+                    <div align="center">
+                        <p>Transacciones</p>
+                    </div>
+
+
+                    <div class="p-3">
+                        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                            <a href="{{'/servicioretiros'}}">Efectuar Retiro</a>
+                        </button>
+                    </div>
                 </ul>
+
 
             </aside>
             <!--/Sidebar-->
@@ -135,7 +156,7 @@
 @stack('modals')
 @livewireScripts
  </body>
- 
+
 
 <script src="{{asset('js/main.js')}} "></script>
 
