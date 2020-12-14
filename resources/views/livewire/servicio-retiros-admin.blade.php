@@ -47,7 +47,7 @@
                                 <div class="md:w-2/3">
                                     <button wire:click.prevent="retirarDinero()" class="shadow bg-blue-200 hover:bg-blue-100 focus:shadow-outline focus:outline-none text-black font-bold py-2 px-4 rounded"
                                             type="button">
-                                        Enviar
+                                        Retirar
                                     </button>
                                 </div>
                             </div>
