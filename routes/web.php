@@ -102,6 +102,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/servicioretiros',function
     return view('livewire.admin.servicio_retiros_admin');
 })->name('/servicioretiros');
 
+// RUTA PARA LA TABLA DE USUARIOS EN LA VISTA ADMIN
+Route::middleware(['auth:sanctum', 'verified'])->get('/usuariosadmin',function (){
+    return view('livewire.admin.usuario_index');
+})->name('/usuariosadmin');
+
 
 
 

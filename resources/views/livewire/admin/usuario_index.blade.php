@@ -4,6 +4,6 @@
     <div>
 
 
-        @livewire('usuarios-index')
+        @livewire('componente-usuario')
     </div>
 @endsection
