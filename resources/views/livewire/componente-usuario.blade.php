@@ -32,6 +32,7 @@
                         <tr>
                             <th scope="col">Id billetera</th>
                             <th scope="col">Nombre</th>
+                            <th scope="col">Correo</th>
                             <th scope="col">Identidad</th>
                             <th scope="col">Fecha de Nacimineto</th>
                             <th scope="col">Sexo</th>
@@ -47,6 +48,7 @@
                             <tr>
                                 <td>{{$usuario->id_billetera}}</td>
                                 <td>{{$usuario->name}} {{$usuario->second_name}} {{$usuario->lastname}} {{$usuario->second_lastname}}}</td>
+                                <td>{{$usuario->email}}</td>
                                 <td>{{$usuario->identidad}}</td>
                                 <td>{{$usuario->fec_nac}}</td>
                                 <td>{{$usuario->sexo}}</td>
