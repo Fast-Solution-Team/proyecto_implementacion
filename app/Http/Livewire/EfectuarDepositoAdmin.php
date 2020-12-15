@@ -108,6 +108,7 @@ class EfectuarDepositoAdmin extends Component
         // actualizacion del campo saldo billetera por el saldo posterior
         SaldoBilletera::where('ID_BILLETERA', $this->billetera)->update(['SALDO_BILLETERA' => $saldoPosteriorBilleteraDestino]);
 
+        session()->flash('ok', 'Transaccion Efectuada Exitosamente.');
        // retorna para recargar la pagina y actualiza el saldo
         return redirect('deposito_admin');
     }

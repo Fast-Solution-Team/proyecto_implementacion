@@ -112,7 +112,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/usuariosadmin',function (
 
 
 // RUTA PARA EFECTUAR DEPOSITOS
-Route::middleware(['auth:sanctum', 'verified', 'role:super_admin'])->get('/deposito_admin', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/deposito_admin', function () {
     return view('livewire.admin.efectura_deposito');
 })->name('efectuar.deposito');
 
