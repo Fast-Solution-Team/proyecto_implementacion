@@ -31,7 +31,7 @@ class User extends Authenticatable
         'name', 'second_name','lastname', 'second_lastname',
         'fec_nac', 'identidad', 'sexo', 'estado_cliente',
         'id_billetera','direccion',
-        'email', 'password',
+        'email', 'password', 'fec_mod', 'usu_mod'
     ];
 
     /**

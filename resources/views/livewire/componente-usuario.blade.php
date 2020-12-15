@@ -17,6 +17,20 @@
 
                     <div class="font-bold text-xl">Usuarios</div>
                 </div>
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <strong>Sorry!</strong> invalid input.<br><br>
+                        <ul style="list-style-type:none;">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                @if($updateMode)
+                    @include('livewire.edit-User')
+                @endif
                 <!-- component -->
                 <div class="relative text-gray-600">
                     <input type="search" wire:model="search" placeholder="Search" class="bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none">
@@ -27,7 +41,7 @@
                     </button>
                 </div>
                 <div class="table-responsive">
-                    <table class="table text-grey-darkest">
+                    <table class="table text-grey-darkest table-striped" style="margin-top:20px;">
                         <thead class="bg-gray-800 text-white text-normal">
                         <tr>
                             <th scope="col">Id billetera</th>
@@ -57,12 +71,12 @@
                                 <td>{{$usuario->getSaldoAttribute()}}</td>
                                 <td>{{ implode( ", ",$usuario->getRoleNames()->toArray())}}</td>
                                 <td>
-                                    <button class="btn btn-primary">
+                                    <button class="btn btn-sm btn-outline-danger py-0" wire:click="edit({{$usuario->id}})">
                                         Editar
                                     </button>
                                 </td>
                                 <td>
-                                    <button class="btn btn-danger">
+                                    <button class="btn btn-sm btn-outline-danger py-0" wire:click="edit({{$usuario->id}})">
                                         Eliminar
                                     </button>
                                 </td>
