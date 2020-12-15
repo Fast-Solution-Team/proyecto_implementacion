@@ -2,32 +2,6 @@
 
     <div class="flex flex-col">
         <!-- Stats Row Starts Here -->
-        <div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2">
-            <div class="shadow-lg bg-red-vibrant border-l-8 hover:bg-red-vibrant-dark border-red-vibrant-dark mb-2 p-2 md:w-1/4 mx-2">
-                <div class="p-4 flex flex-col">
-                    <a href="#" class="no-underline text-white text-2xl">
-                        222
-                    </a>
-                    <a href="#" class="no-underline text-white text-lg">
-                        Total
-                    </a>
-                </div>
-            </div>
-
-            <div class="shadow bg-info border-l-8 hover:bg-info-dark border-info-dark mb-2 p-2 md:w-1/4 mx-2">
-                <div class="p-4 flex flex-col">
-                    <a href="#" class="no-underline text-white text-2xl">
-                       1
-                    </a>
-                    <a href="#" class="no-underline text-white text-lg">
-                        Depositos Realizados
-                    </a>
-                </div>
-            </div>
-
-
-
-        </div>
 
 
         <!-- /Stats Row Ends Here -->
@@ -41,7 +15,7 @@
 
                 <div class="px-6 py-2 border-b border-light-grey">
 
-                    <div class="font-bold text-xl">Depositos</div>
+                    <div class="font-bold text-xl">Usuarios</div>
                 </div>
                 <!-- component -->
                 <div class="relative text-gray-600">
@@ -59,38 +33,39 @@
                             <th scope="col">Id billetera</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Identidad</th>
-                            <th scope="col">Domicilio</th>
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Monto</th>
-                            <th scope="col">Saldo anterior</th>
-                            <th scope="col">Saldo posterior</th>
+                            <th scope="col">Fecha de Nacimineto</th>
+                            <th scope="col">Sexo</th>
+                            <th scope="col">Estado cliente</th>
+                            <th scope="col">Direccion</th>
+                            <th scope="col">Saldo</th>
+                            <th scope="col">rol</th>
+                            <th scope="col" colspan="2">&nbsp;</th>
                         </tr>
                         </thead>
                         <tbody>
-
-
-
+                        @foreach($usuarios as $usuario)
                             <tr>
-
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-
-
-
-
+                                <td>{{$usuario->id_billetera}}</td>
+                                <td>{{$usuario->name}} {{$usuario->second_name}} {{$usuario->lastname}} {{$usuario->second_lastname}}}</td>
+                                <td>{{$usuario->identidad}}</td>
+                                <td>{{$usuario->fec_nac}}</td>
+                                <td>{{$usuario->sexo}}</td>
+                                <td>{{$usuario->estado_cliente}}</td>
+                                <td>{{$usuario->direccion}} {{$usuario->departamento}} {{$usuario->municipio}}</td>
+                                <td>{{$usuario->SALDO_BILLETERA}}</td>
+                                <td>{{ implode( ", ",$usuario->getRoleNames()->toArray())}}</td>
+                                <td>
+                                    <button class="btn btn-primary">
+                                        Editar
+                                    </button>
+                                </td>
+                                <td>
+                                    <button class="btn btn-danger">
+                                        Eliminar
+                                    </button>
+                                </td>
                             </tr>
-
-
-
-
-
-
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
