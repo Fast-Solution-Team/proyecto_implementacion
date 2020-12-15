@@ -77,8 +77,8 @@ class EfectuarDepositoAdmin extends Component
 
         $transaccion = new Transaccion();
         $transaccion->FECHA_TRANSACCION = $date;
-        $transaccion->ID_BILLETERA = Auth::user()->id_billetera;
-        $transaccion->ID_BILLETERA_DESTINO = $this->billetera;
+        $transaccion->ID_BILLETERA = $this->billetera;
+        $transaccion->ID_BILLETERA_DESTINO = NULL;
         $transaccion->TIPO_TRANSACCION = 'DP';
         $transaccion->FEC_CRE = $date;
         $transaccion->ESTADO_TRANSACCION = 'E';
