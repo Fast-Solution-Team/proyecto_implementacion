@@ -68,5 +68,16 @@ class User extends Authenticatable
         $saldo = SaldoBilletera::where('ID_BILLETERA', $this->id_billetera)->pluck('SALDO_BILLETERA')->first();
         return $saldo;
     }
+    public function getMunicipio(){
+        $direccion = Direcciones::where('identidad', $this->identidad)->pluck('municipio')->first();
+        return $direccion;
+    }
+    public function getDepto(){
+        $direccion = Direcciones::where('identidad', $this->identidad)->pluck('departamento')->first();
+        return $direccion;
+    }
+
+
+
 
 }

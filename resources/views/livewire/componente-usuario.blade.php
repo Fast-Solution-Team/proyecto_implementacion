@@ -51,8 +51,8 @@
                                 <td>{{$usuario->fec_nac}}</td>
                                 <td>{{$usuario->sexo}}</td>
                                 <td>{{$usuario->estado_cliente}}</td>
-                                <td>{{$usuario->direccion}} {{$usuario->departamento}} {{$usuario->municipio}}</td>
-                                <td>{{$usuario->SALDO_BILLETERA}}</td>
+                                <td>{{$usuario->direccion}} / {{$usuario->getDepto()}} / {{$usuario->getMunicipio()}}</td>
+                                <td>{{$usuario->getSaldoAttribute()}}</td>
                                 <td>{{ implode( ", ",$usuario->getRoleNames()->toArray())}}</td>
                                 <td>
                                     <button class="btn btn-primary">
@@ -69,7 +69,7 @@
                         </tbody>
                     </table>
                 </div>
-
+                {{$usuarios->links('pagination-links')}}
             </div>
             <!-- /card -->
 
