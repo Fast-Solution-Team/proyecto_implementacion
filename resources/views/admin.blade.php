@@ -57,8 +57,8 @@
                 <ul class="list-reset flex flex-col">
                     <li class="w-full h-full py-3 px-2 border-b border-light-border">
                         <a href="{{route('/usuariosadmin')}}"
-                           class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                            <i class="fab fa-wpforms float-left mx-2"></i>
+                           class="font-medium font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                           <i class="fas fa-users float-left mx-2"></i>
                             Usuarios
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>

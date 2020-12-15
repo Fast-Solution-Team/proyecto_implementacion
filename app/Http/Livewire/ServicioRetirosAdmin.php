@@ -50,7 +50,7 @@ class ServicioRetirosAdmin extends Component
 
                         $cliente = User::where('id_billetera', $this->billetera)->get();
                         $this->datos_usuario = 'Se hará un retiro al cliente: ' .$cliente[0]['name'].' '
-                            .$cliente[0]['second_name'].' '.$cliente[0]['lastname'].' '.$cliente[0]['second_lastname'].' de '.$this->monto;
+                            .$cliente[0]['second_name'].' '.$cliente[0]['lastname'].' '.$cliente[0]['second_lastname'].' de L. '.$this->monto;
 
                         $this->openConfirmarEnvio = 'abrir';
 

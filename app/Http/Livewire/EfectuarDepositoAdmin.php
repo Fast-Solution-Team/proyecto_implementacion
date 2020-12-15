@@ -35,8 +35,9 @@ class EfectuarDepositoAdmin extends Component
         'monto.min' => 'No se aceptan numeros negativos.'
     ];
 
- 
-    public function enviardinero(){
+
+    public function enviardinero()
+    {
 
         $validate = $this->validate([
             'billetera' => 'required',
@@ -44,30 +45,33 @@ class EfectuarDepositoAdmin extends Component
         ]);
 
         $comprobarbilletera = Billetera::where('ID_BILLETERA', $this->billetera)->count();
-        if ($comprobarbilletera > 0){
+        if ($comprobarbilletera > 0) {
 
             $comprobarBilleteraUsuario = Billetera::where('ID_BILLETERA', $this->billetera)->pluck('BILLETERA_ASIGNADA')->first();
 
-            if ($comprobarBilleteraUsuario == 'S'){
-                   
-                $cliente = User::where('id_billetera', $this->billetera)->get();
+            if ($comprobarBilleteraUsuario == 'S') {
+                $comprobarSaldo = SaldoBilletera::where('ID_BILLETERA', '=', $this->billetera)->pluck('SALDO_BILLETERA')->first() - $this->monto;
 
-                $this->datos_usuario = 'Seguro quieres depositar a: ' .$cliente[0]['name'].' '
-                .$cliente[0]['second_name'].' '.$cliente[0]['lastname'].' '.$cliente[0]['second_lastname'];
+                if ($comprobarSaldo >= 0) {
+                    $cliente = User::where('id_billetera', $this->billetera)->get();
 
-                $this->datos_monto = 'La cantidad de: L. '. $this->monto;
+                    $this->datos_usuario = 'Se hara un deposito a: ' . $cliente[0]['name'] . ' '
+                        . $cliente[0]['second_name'] . ' ' . $cliente[0]['lastname'] . ' ' . $cliente[0]['second_lastname'];
 
-                $this->openConfirmarEnvio = 'abrir';
+                    $this->datos_monto = 'La cantidad de: L. ' . $this->monto;
 
-            }else{
-                $this->errorEnvio = 'La billetera no esta asignada a un cliente';
+                    $this->openConfirmarEnvio = 'abrir';
+
+                } else {
+                    $this->errorEnvio = 'La billetera no esta asignada a un cliente';
+                    $this->openErrorBilletera = 'openErrorBilletera';
+                }
+
+            } else {
+                $this->errorEnvio = 'La billetera no existe en el registro';
                 $this->openErrorBilletera = 'openErrorBilletera';
+
             }
-
-        }else{
-            $this->errorEnvio = 'La billetera no existe en el registro';
-            $this->openErrorBilletera = 'openErrorBilletera';
-
         }
     }
 
@@ -88,28 +92,22 @@ class EfectuarDepositoAdmin extends Component
 
         $movimiento = new Movimiento();
 
-        $saldo_posterior =  Auth::user()->getSaldoAttribute()+$this->monto;
+        $saldo_actual = SaldoBilletera::where('ID_BILLETERA', '=',$this->billetera)->pluck('SALDO_BILLETERA')->first();
+        $saldo_posterior =  $saldo_actual + $this->monto;
         $movimiento->FECHA_MOVIMIENTO = $date;
         $movimiento->ID_TRANSACCION = $transaccion->id; // relacion entre la tabla transacciones y movimientos
         $movimiento->MONTO_TRANSACCION = $this->monto;
-        $movimiento->SALDO_ANTERIOR = Auth::user()->getSaldoAttribute();
+        $movimiento->SALDO_ANTERIOR = $saldo_actual;
         $movimiento->SALDO_POSTERIOR = $saldo_posterior ;
         $movimiento->USU_CRE = '@admin';
         $movimiento->FEC_CRE = $date;
 
         $movimiento->save();
 
-        // recuperar el saldo que tiene actualmente la billetera destino
-        $saldoAnteriorBilleteraDestino = SaldoBilletera::where('ID_BILLETERA', $this->billetera)->pluck('SALDO_BILLETERA')->first();
 
-        // suma para el saldo billetera destino
-        $saldoPosteriorBilleteraDestino = $saldoAnteriorBilleteraDestino + $this->monto;
-
-        // actualizacion del campo saldo billetera por el saldo posterior
-        SaldoBilletera::where('ID_BILLETERA', $this->billetera)->update(['SALDO_BILLETERA' => $saldoPosteriorBilleteraDestino]);
+        SaldoBilletera::where('ID_BILLETERA', $this->billetera)->update(['SALDO_BILLETERA' => $saldo_posterior]);
 
         session()->flash('ok', 'Transaccion Efectuada Exitosamente.');
-       // retorna para recargar la pagina y actualiza el saldo
         return redirect('deposito_admin');
     }
 

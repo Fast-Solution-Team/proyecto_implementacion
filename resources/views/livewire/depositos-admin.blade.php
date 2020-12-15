@@ -52,6 +52,7 @@
     </svg>
                     </button>
                 </div>
+
                 <div class="table-responsive">
                     <table class="table text-grey-darkest">
                         <thead class="bg-gray-800 text-white text-normal">
@@ -105,4 +106,7 @@
         <!--Profile Tabs-->
         <!--/Profile Tabs-->
     </div>
+</div>
+    </div>
+</div>
 </div>

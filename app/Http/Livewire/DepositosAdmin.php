@@ -14,10 +14,12 @@ class DepositosAdmin extends Component
     public function render()
     {
         $this->depositos = DB::table('movimientos_billeteras')
+
             ->join('transacciones', 'movimientos_billeteras.ID_TRANSACCION', '=', 'transacciones.ID_TRANSACCION')
-            ->join('servicios', 'servicios.ID_SERVICIO', '=', 'transacciones.ID_SERVICIO')
-            ->join( 'users', 'users.id_billetera', '=', 'transacciones.ID_BillETERA')
-            ->select('servicios.*','movimientos_billeteras.*','transacciones.*' ,'users.*')
+            ->join('users', 'users.id_billetera', '=', 'transacciones.ID_BillETERA')
+
+
+            ->select('movimientos_billeteras.*','transacciones.*' ,'users.*')
 
             ->where('users.id_billetera', 'like', '%'.$this->search.'%')
             ->where('transacciones.TIPO_TRANSACCION', '=','DP')
@@ -50,8 +52,7 @@ class DepositosAdmin extends Component
             ->where('transacciones.TIPO_TRANSACCION', '=','DP')
 
             ->orwhere('movimientos_billeteras.SALDO_POSTERIOR', 'like', '%'.$this->search.'%')
-            ->where('transacciones.TIPO_TRANSACCION', '=','DP')
-            ->paginate(5);
+            ->where('transacciones.TIPO_TRANSACCION', '=','DP')->paginate(5);
 
 
 

@@ -117,13 +117,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/deposito_admin', function
 })->name('efectuar.deposito');
 
 
-use App\Http\Controllers\DepositoController;
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/tr/de/',
-[DepositoController::class ,'index'])->name('deposito.efectivo');
-
-Route::middleware(['auth:sanctum', 'verified'])->put('/tr/de/{id}',
-[DepositoController::class ,'update'])->name('deposito.update');
 
 
 
