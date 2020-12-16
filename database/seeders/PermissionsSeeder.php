@@ -42,6 +42,10 @@ class PermissionsSeeder extends Seeder
         'estado_cliente' => "a",
         'password' => Hash::make('user.password'),
     ]);
+        $creacion_saldo = DB::table('saldo_billetera')->insert([
+            'id_billetera' => '0000000000000000','saldo_billetera' => 0,
+            'Fec_cre'=> $now->format('Y-m-d H:i:s'),'usu_cre' => "host"
+        ]);
 
 //        User::create(['name' => 'test', 'email' => 'test@gmail.com', 'password' => Hash::make('admin')]);
 
