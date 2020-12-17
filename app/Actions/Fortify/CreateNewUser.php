@@ -21,9 +21,14 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
+        $text_billetera = "billeteras";
+        $text_sys_secuencias = "sys_secuencias";
+        $generar_billetera = DB::select('select f_generar_billetera(?)', [$text_billetera]);
+        $actualizar_billeteras = DB::select('call p_actualizar_secuencia(?)', [$text_sys_secuencias]);
+        $procesar = DB::select('call emoney_rebuild1.p_procesar_billeteras()');
+
         // consultamos la disponibilidad de billeteras
         $billeteras = DB::table('billeteras')->select('ID_BILLETERA','BILLETERA_ASIGNADA')->where('BILLETERA_ASIGNADA',"N")->first();
-        if($billeteras!=null){
             Validator::make($input, [
                 'name' => ['required', 'string', 'max:255'],
                 'second_name' => ['required', 'string', 'max:255'],
@@ -81,9 +86,6 @@ class CreateNewUser implements CreatesNewUsers
                     $this->createTeam($user);
                 });
             });
-        }else{
-            abort(response('No hay billeteras disponibles', 401) );
-        }
         //insertar manualmente la billetera en users
     }
 

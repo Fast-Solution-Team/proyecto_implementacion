@@ -43,6 +43,16 @@ class PermissionsSeeder extends Seeder
         'password' => Hash::make('user.password'),
     ]);
 
+        $creacion_team = DB::table('teams')->insert([
+            'user_id' => '1',
+            'name' => 'admin',
+            'personal_team' => '1'
+    ]);
+        $creacion_saldo = DB::table('saldo_billetera')->insert([
+            'id_billetera' => '0000000000000000','saldo_billetera' => 0,
+            'Fec_cre'=> $now->format('Y-m-d H:i:s'),'usu_cre' => "host"
+        ]);
+
 //        User::create(['name' => 'test', 'email' => 'test@gmail.com', 'password' => Hash::make('admin')]);
 
         $role = Role::create(['name' => 'super_admin']);
