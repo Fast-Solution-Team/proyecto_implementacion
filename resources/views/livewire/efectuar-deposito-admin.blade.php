@@ -32,4 +32,9 @@
         @include('livewire.admin.confimar_desposito')
     @endif
 
+    @if (session()->has('ok'))
+        <div class="alert alert-success">
+            @include('livewire.admin.ok_notificacion_deposito')
+        </div>
+    @endif
 </div>

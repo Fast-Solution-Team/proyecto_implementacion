@@ -112,18 +112,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/usuariosadmin',function (
 
 
 // RUTA PARA EFECTUAR DEPOSITOS
-Route::middleware(['auth:sanctum', 'verified', 'role:super_admin'])->get('/deposito_admin', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/deposito_admin', function () {
     return view('livewire.admin.efectura_deposito');
 })->name('efectuar.deposito');
 
 
-use App\Http\Controllers\DepositoController;
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/tr/de/',
-[DepositoController::class ,'index'])->name('deposito.efectivo');
-
-Route::middleware(['auth:sanctum', 'verified'])->put('/tr/de/{id}',
-[DepositoController::class ,'update'])->name('deposito.update');
 
 
 

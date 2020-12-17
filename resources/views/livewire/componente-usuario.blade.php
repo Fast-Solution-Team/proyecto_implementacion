@@ -1,6 +1,6 @@
 <div xmlns:wire="http://www.w3.org/1999/xhtml">
 
-    <div class="flex flex-col">
+   <div class="flex flex-col">
         <!-- Stats Row Starts Here -->
 
 
