@@ -18,9 +18,9 @@ class ComponenteUsuario extends Component
     public $name, $email, $selected_id, $estado_cliente, $rol_asign, $rol;
     use WithPagination;
     public $updateMode = false;
-    protected $rules = [
-        'rol' => 'required'
-    ];
+//    protected $rules = [
+//        'rol' => 'required'
+//    ];
     public function render()
     {
         $users = User::paginate(10);
@@ -51,7 +51,7 @@ class ComponenteUsuario extends Component
             'name' => 'required|min:5',
             'estado_cliente' => 'required|min:1|max:1',
             'email' => 'required|email:rfc,dns',
-            'rol' => 'required'
+//            'rol' => 'required'
         ]);
         if ($this->selected_id) {
             $record = User::find($this->selected_id);
